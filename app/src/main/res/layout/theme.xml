@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/vector_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageChuDe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/image_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_gravity="bottom"
+            android:background="#B3FFFFFF"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textChuDe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Hambuger"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="180dp"
+        android:layout_height="200dp"
+        app:cardCornerRadius="8dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="215dp"
+        tools:layout_editor_absoluteY="68dp">
+
+        <ImageView
+            android:id="@+id/imageChuDe2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/image_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_gravity="bottom"
+            android:background="#B3FFFFFF"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textChuDe2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Hambuger"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
