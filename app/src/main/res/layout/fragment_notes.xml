@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/style2"
-        >
+        android:background="@drawable/style2">
 
         <TextView
             android:layout_width="match_parent"
@@ -20,8 +19,7 @@
             android:textSize="18dp"
             android:text="Tất Cả Ghi Chú"
             android:gravity="center"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
@@ -37,15 +35,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_add"
                 android:backgroundTint="#00FFFFFF"
                 android:layout_gravity="right"
-
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <LinearLayout
@@ -53,21 +49,18 @@
                 android:layout_height="80dp"
                 android:orientation="vertical"
                 android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                >
+                android:layout_marginEnd="12dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:layout_weight="1"
-                    android:background="@drawable/style3"
-                    >
+                    android:background="@drawable/style3">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_weight="1"
-                        >
+                        android:layout_weight="1">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -76,16 +69,16 @@
                             android:textSize="18dp"
                             android:textStyle="bold"
                             android:layout_weight="1"
-                            android:layout_marginStart="5dp"
-                            />
+                            android:layout_marginStart="5dp"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_weight="1"
                             android:text="01/01/2021"
                             android:textSize="12dp"
-                            android:layout_weight="1"
-                            android:layout_marginStart="5dp"
-                            />
+                            tools:ignore="TextContrastCheck" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -105,8 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:background="@drawable/style4"
-                    >
+                    android:background="@drawable/style4">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="40dp"

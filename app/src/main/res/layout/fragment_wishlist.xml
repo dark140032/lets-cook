@@ -11,20 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/style2"
-        >
-
+        android:background="@drawable/style2">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:textSize="18dp"
             android:text="Danh Sách Yêu Thích"
             android:gravity="center"
-            android:textColor="@color/white"
-            />
-
+            android:textColor="@color/white"/>
     </LinearLayout>
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -36,8 +31,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.SearchView
                     android:background="@drawable/style"
@@ -46,8 +40,7 @@
                     android:layout_height="41dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="45dp"
-                    android:layout_marginEnd="45dp"
-                    />
+                    android:layout_marginEnd="45dp"/>
 
             <GridLayout
                 android:layout_width="match_parent"
@@ -64,11 +57,12 @@
                     tools:listitem="@layout/item_wishlist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    />
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
 
             </GridLayout>
+
             </LinearLayout>
+
     </ScrollView>
 
 </LinearLayout>
