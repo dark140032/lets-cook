@@ -7,288 +7,114 @@
     android:orientation="vertical"
     tools:context=".ui.notes.NotesFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
         android:background="@drawable/style2"
-        android:orientation="vertical">
+        >
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center"
+            android:layout_height="40dp"
+            android:textSize="18dp"
             android:text="Tất Cả Ghi Chú"
+            android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="18dp" />
+            />
 
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="10dp"
         tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
             <ImageButton
-                android:id="@+id/addnew"
-                android:layout_marginEnd="15dp"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="right"
-                android:background="#006BCBFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_add"
-                tools:ignore="SpeakableTextPresentCheck"></ImageButton>
+                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="right"
+
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+                android:layout_height="80dp"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                >
                 <LinearLayout
-                    android:background="@drawable/style4"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    app:cardBackgroundColor="#808B8B8B"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:background="@drawable/style3"
                     >
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
                         >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="Title"
-                                android:textSize="16dp"
-                                android:textStyle="bold"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"></TextView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="10/10/2021"
-                                android:textSize="10dp"
-                                android:textStyle="bold"
-                                android:textColor="#737373"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"></TextView>
-
-                        </LinearLayout>
-
-                        <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="8"
-                            android:src="@drawable/ic_binnote"
-                            android:background="#00000000"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"></ImageButton>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Title note"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_marginStart="5dp"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="01/01/2021"
+                            android:textSize="12dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="5dp"
+                            />
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/style5"
-                    app:cardBackgroundColor="#80E5E5E5">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="#7D7D7D"
-                        android:layout_marginStart="10dp"
-                        android:textSize="10dp"
-                        android:text="contenttttttttttt"
-                        >
-                    </TextView>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:background="@drawable/style4"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    app:cardBackgroundColor="#808B8B8B"
-                    >
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"
                         >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="Title"
-                                android:textSize="16dp"
-                                android:textStyle="bold"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"></TextView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="10/10/2021"
-                                android:textSize="10dp"
-                                android:textStyle="bold"
-                                android:textColor="#737373"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"></TextView>
-
-                        </LinearLayout>
 
                         <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="8"
-                            android:src="@drawable/ic_binnote"
-                            android:background="#00000000"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"></ImageButton>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#00FFFFFF"
+                            android:src="@drawable/ic_bin_notes"
+                            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"></ImageButton>
                     </LinearLayout>
-
                 </LinearLayout>
-
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/style5"
-                    app:cardBackgroundColor="#80E5E5E5">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="#7D7D7D"
-                        android:layout_marginStart="10dp"
-                        android:textSize="10dp"
-                        android:text="contenttttttttttt"
-                        >
-                    </TextView>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
+                    android:layout_weight="1"
                     android:background="@drawable/style4"
-                    android:orientation="horizontal"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    app:cardBackgroundColor="#808B8B8B"
                     >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        >
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="Title"
-                                android:textSize="16dp"
-                                android:textStyle="bold"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"></TextView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="10/10/2021"
-                                android:textSize="10dp"
-                                android:textStyle="bold"
-                                android:textColor="#737373"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="1"></TextView>
-
-                        </LinearLayout>
-
-                        <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="8"
-                            android:src="@drawable/ic_binnote"
-                            android:background="#00000000"
-                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"></ImageButton>
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:background="@drawable/style5"
-                    app:cardBackgroundColor="#80E5E5E5">
-
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textColor="#7D7D7D"
-                        android:layout_marginStart="10dp"
-                        android:textSize="10dp"
-                        android:text="contenttttttttttt"
-                        >
-                    </TextView>
-
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:text="1231321321321321321321313213"
+                        android:layout_marginStart="5dp"
+                        />
                 </LinearLayout>
-
-
             </LinearLayout>
 
         </LinearLayout>
