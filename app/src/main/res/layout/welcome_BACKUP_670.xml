@@ -26,20 +26,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-
     <Button
         android:id="@+id/btn_login"
         android:layout_width="170dp"
         android:layout_height="47dp"
         android:layout_marginBottom="12dp"
+        android:background="@drawable/border3"
         android:text="ĐĂNG NHẬP"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/btn_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/border3"
-        />
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btn_register"
@@ -52,6 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
