@@ -59,4 +59,15 @@ public class CongThucAdapter extends RecyclerView.Adapter<CongThucAdapter.ViewHo
             txtName = itemView.findViewById(R.id.txtName);
         }
     }
+
+    // method for filtering our recyclerview items.
+    public void filterList(ArrayList<CongThuc> filterllist) {
+        // below line is to add our filtered
+        // list in our course array list.
+        listSanPham = filterllist;
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged();
+    }
+
 }
