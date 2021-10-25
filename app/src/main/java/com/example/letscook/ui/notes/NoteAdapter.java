@@ -26,7 +26,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         this.context = context;
         this.listNote = listNote;
     }
-    
+
     @NonNull
     @Override
     public NoteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
