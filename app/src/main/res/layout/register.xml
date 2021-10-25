@@ -14,7 +14,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
         android:background="#00FFFFFF"
-        android:src="@drawable/vector_white"
+        android:src="@drawable/ic_back_screen_white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.005"
         app:layout_constraintStart_toStartOf="parent"

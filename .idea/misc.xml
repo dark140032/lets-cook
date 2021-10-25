@@ -3,15 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-anydpi/ic_back_screen_black.xml" value="0.3974358974358974" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-anydpi/ic_back_screen_white.xml" value="0.3974358974358974" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-anydpi/ic_home.xml" value="0.3974358974358974" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-xxhdpi/border.xml" value="0.4036458333333333" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-xxhdpi/border2.xml" value="0.4036458333333333" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-xxhdpi/border3.xml" value="0.4036458333333333" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable/style.xml" value="0.2359375" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable/style2.xml" value="0.2359375" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable/style3.xml" value="0.2359375" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable/style4.xml" value="0.2359375" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable/style5.xml" value="0.2359375" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/fragment_home.xml" value="0.21927083333333333" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/fragment_notes.xml" value="0.21927083333333333" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/fragment_profile.xml" value="0.33605072463768115" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/fragment_search.xml" value="0.21979166666666666" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/fragment_wishlist.xml" value="0.2907608695652174" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/home_page.xml" value="0.2848731884057971" />
-        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/login.xml" value="0.25" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/login.xml" value="0.33" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/register.xml" value="0.2848731884057971" />
-        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/theme.xml" value="0.2848731884057971" />
-        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/welcome.xml" value="0.2848731884057971" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/theme.xml" value="0.22" />
+        <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/layout/welcome.xml" value="0.5" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Letscook/app/src/main/res/drawable-anydpi/ic_bin.xml" value="0.146875" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Letscook/app/src/main/res/drawable/style.xml" value="0.16203703703703703" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Letscook/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
