@@ -11,13 +11,24 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentNotesBinding;
+import com.example.letscook.ui.wishlist.CongThuc;
+import com.example.letscook.ui.wishlist.CongThucAdapter;
+
+import java.util.ArrayList;
 
 public class NotesFragment extends Fragment {
 
     private NotesViewModel homeViewModel;
     private FragmentNotesBinding binding;
+
+    RecyclerView recyclerView;
+    ArrayList<Note> listNote;
+    NoteAdapter noteAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -27,13 +38,14 @@ public class NotesFragment extends Fragment {
         binding = FragmentNotesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        final TextView textView = binding.textNotes;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
+        recyclerView= root.findViewById(R.id.recyclerviewnotes);
+        listNote=new ArrayList<>();
+        listNote.add(new Note("Note 1", "10/10/2021","Alaba trap!"));
+        listNote.add(new Note("Note 2", "10/10/2021","Alaba trap!"));
+
+        noteAdapter=new NoteAdapter(getContext(),listNote);
+        recyclerView.setAdapter(noteAdapter);
+
         return root;
     }
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/style3"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/txttitlenotes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title note"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    />
+                <TextView
+                    android:id="@+id/txtdatenoteslast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01/01/2021"
+                    android:textSize="12dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="5dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#00FFFFFF"
+                    android:src="@drawable/ic_bin_notes"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"></ImageButton>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/style4"
+            >
+            <TextView
+                android:id="@+id/txtcontentnotes"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="4dp"
+                android:text="1231321321321321321321313213"
+                android:layout_marginStart="5dp"
+                />
+        </LinearLayout>
+
+</LinearLayout>
