@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letscook.R;
-import com.example.letscook.model.User;
+import com.example.letscook.model.Note;
 
 
 public class NoteDetailActivity extends AppCompatActivity {
@@ -32,8 +32,8 @@ public class NoteDetailActivity extends AppCompatActivity {
         }
         Note note = (Note) bundle.get("object_note");
         TextView txtTitleNote = findViewById(R.id.txt_title_note);
-        txtTitleNote.setText(note.getTitle());
+        txtTitleNote.setText(note.getNoteName());
         TextView txtContentNote = findViewById(R.id.txt_content_note);
-        txtContentNote.setText(note.getContent());
+        txtContentNote.setText(note.getNoteContent());
     }
 }

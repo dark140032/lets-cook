@@ -3,6 +3,7 @@ package com.example.letscook.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -12,31 +13,31 @@ public class MyDB extends SQLiteOpenHelper {
     private  static final String DATABASE_NAME = "LetCook.sqlite";
     private  static final int DATABASE_VERSION = 1;
 
-    private  static final String TBL_NOTE = "note";
-    private  static final String NOTE_ID = "note_id";
-    private  static final String NOTE_NAME = "note_name";
-    private  static final String NOTE_CONTENT = "note_contnt";
-    private  static final String FIRT_REGISTER_PTTM= "frstRegistPttm";
+    public static final String TBL_NOTE = "note";
+    public  static final String NOTE_ID = "note_id";
+    public  static final String NOTE_NAME = "note_name";
+    public  static final String NOTE_CONTENT = "note_contnt";
+    public  static final String FIRT_REGISTER_PTTM= "frstRegistPttm";
 
-    private String TBL_CREATE_NOTE = " create table " + TBL_NOTE + " (" +
+    public String TBL_CREATE_NOTE = " create table " + TBL_NOTE + " (" +
             NOTE_ID + " integer primary key ," +
-            USER_ID + "INTEGER ," +
+            USER_ID + " INTEGER ," +
             NOTE_NAME + " text UNIQUE ," +
             NOTE_CONTENT + " text ," +
             FIRT_REGISTER_PTTM + " text ,"+
             " FOREIGN KEY(" + USER_ID + ") REFERENCES "+ TBL_USER + "(" + USER_ID + "))";
 
-    private static final String TBL_USER = "user";
-    private static final String USER_ID = "user_id";
-    private static final String USER_NAME = "user_name";
-    private static final String EMAIL = "email";
-    private static final String PASSWORD = "password";
-    private static final String USER_AVATAR = "user_avatar";
-    private static final String DATE_OF_BIRTH = "date_of_birth";
-    private static final String JOB = "job";
-    private static final String USER_DESCRIPTION = "user_description";
+    public static final String TBL_USER = "user";
+    public static final String USER_ID = "user_id";
+    public static final String USER_NAME = "user_name";
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
+    public static final String USER_AVATAR = "user_avatar";
+    public static final String DATE_OF_BIRTH = "date_of_birth";
+    public static final String JOB = "job";
+    public static final String USER_DESCRIPTION = "user_description";
 
-    private String TBL_CREATE_USER = " create table " + TBL_USER + " (" +
+    public String TBL_CREATE_USER = " create table " + TBL_USER + " (" +
             USER_ID + " integer primary key AUTOINCREMENT ," +
             USER_NAME + " TEXT NOT NULL ," +
             EMAIL + " TEXT NOT NULL UNIQUE ," +
@@ -79,8 +80,9 @@ public class MyDB extends SQLiteOpenHelper {
     private static final String TBL_THEME_RECIPE = "theme_recipe";
 
     private String TBL_CREATE_THEME_RECIPE= "create table " + TBL_THEME_RECIPE + " (" +
-            THEME_ID + " integer primary key," +
-            RECIPE_ID + " integer primary key)";
+            THEME_ID + " integer, " +
+            RECIPE_ID + " integer, "+
+            " CONSTRAINT " +  TBL_THEME_RECIPE + " PRIMARY KEY (" + THEME_ID+ "," + RECIPE_ID +  "))";
 
     private static final String TBL_CATEGORY = "category";
     private static final String CATEGORY_ID = "category_id";
@@ -93,11 +95,13 @@ public class MyDB extends SQLiteOpenHelper {
     private static final String TBL_CATEGORY_RECIPE = "category_recipe";
 
     private String TBL_CREATE_CATEGORY_RECIPE= "create table " + TBL_CATEGORY_RECIPE + " (" +
-            CATEGORY_ID + " integer primary key ," +
-            RECIPE_ID + " integer primary key)";
+            CATEGORY_ID + " integer ," +
+            RECIPE_ID + " integer ,"+
+            " CONSTRAINT " +  TBL_CATEGORY_RECIPE + " PRIMARY KEY (" + CATEGORY_ID+ "," + RECIPE_ID +  "))";
 
     public MyDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.e("okie", "MyDB:" );
     }
 
     @Override

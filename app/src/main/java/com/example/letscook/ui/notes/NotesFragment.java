@@ -17,6 +17,7 @@ import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentNotesBinding;
 
 import java.util.ArrayList;
+import com.example.letscook.model.Note;
 
 public class NotesFragment extends Fragment {
 
@@ -48,8 +49,6 @@ public class NotesFragment extends Fragment {
 
         recyclerView= root.findViewById(R.id.recyclerviewnotes);
         listNote=new ArrayList<>();
-        listNote.add(new Note("Note 1", "10/10/2021","Alaba trap!"));
-        listNote.add(new Note("Note 2", "10/10/2021","Alaba trap!"));
 
         noteAdapter=new NoteAdapter(getContext(),listNote);
         recyclerView.setAdapter(noteAdapter);

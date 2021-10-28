@@ -1,11 +1,14 @@
 package com.example.letscook.model;
 
-public class Note {
+import java.io.Serializable;
+
+public class Note implements Serializable {
     private int noteId;
     private String noteName;
     private String noteContent;
     private String frstRegistPttm;
     private String userId;
+
     public Note() {
     }
 
