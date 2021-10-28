@@ -18,13 +18,13 @@ public class MyDB extends SQLiteOpenHelper {
     private  static final String NOTE_CONTENT = "note_contnt";
     private  static final String FIRT_REGISTER_PTTM= "frstRegistPttm";
 
-
-    private String TBL_CREATE_NOTE = "create table " + TBL_NOTE + " (" +
-            NOTE_ID + " integer primary key," +
-            USER_ID + "INTEGER," +
-            NOTE_NAME + " text UNIQUE," +
-            NOTE_CONTENT + " text," +
-            FIRT_REGISTER_PTTM + " test)";
+    private String TBL_CREATE_NOTE = " create table " + TBL_NOTE + " (" +
+            NOTE_ID + " integer primary key ," +
+            USER_ID + "INTEGER ," +
+            NOTE_NAME + " text UNIQUE ," +
+            NOTE_CONTENT + " text ," +
+            FIRT_REGISTER_PTTM + " text ,"+
+            " FOREIGN KEY(" + USER_ID + ") REFERENCES "+ TBL_USER + "(" + USER_ID + "))";
 
     private static final String TBL_USER = "user";
     private static final String USER_ID = "user_id";
@@ -36,23 +36,25 @@ public class MyDB extends SQLiteOpenHelper {
     private static final String JOB = "job";
     private static final String USER_DESCRIPTION = "user_description";
 
-    private String TBL_CREATE_USER = "create table " + TBL_USER + " (" +
-            USER_ID + " integer primary key AUTOINCREMENT," +
-            USER_NAME + "TEXT NOT NULL," +
-            EMAIL + "TEXT NOT NULL UNIQUE," +
-            PASSWORD + "TEXT NOT NULL, " +
-            USER_AVATAR + " TEXT," +
-            DATE_OF_BIRTH + " DATE,"+
-            JOB + "TEXT," +
-            USER_DESCRIPTION + "TEXT)";
+    private String TBL_CREATE_USER = " create table " + TBL_USER + " (" +
+            USER_ID + " integer primary key AUTOINCREMENT ," +
+            USER_NAME + " TEXT NOT NULL ," +
+            EMAIL + " TEXT NOT NULL UNIQUE ," +
+            PASSWORD + "TEXT NOT NULL , " +
+            USER_AVATAR + " TEXT ," +
+            DATE_OF_BIRTH + " text ,"+
+            JOB + " TEXT ," +
+            USER_DESCRIPTION + " TEXT )";
 
     private static final String TBL_WISHLIST = "wishlist";
     private static final String WISHLIST_ID = "wishlist_id";
 
     private String TBL_CREATE_WISHLIST = "create table " + TBL_WISHLIST + " (" +
             WISHLIST_ID + " integer primary key AUTOINCREMENT," +
-            USER_ID + "INTEGER UNIQUE,"+
-            RECIPE_ID + "INTEGER UNIQUE)";
+            USER_ID + " INTEGER UNIQUE,"+
+            RECIPE_ID + " INTEGER UNIQUE," +
+            " FOREIGN KEY(" + RECIPE_ID + ") REFERENCES "+ TBL_RECIPE + "(" + RECIPE_ID + "),"+
+            " FOREIGN KEY(" + USER_ID + ") REFERENCES "+ TBL_USER + "(" + USER_ID + "))";
 
     private static final String TBL_RECIPE = "recipe";
     private static final String RECIPE_ID = "recipe_id";
@@ -62,9 +64,9 @@ public class MyDB extends SQLiteOpenHelper {
 
     private String TBL_CREATE_RECIPE= "create table " + TBL_RECIPE + " (" +
             RECIPE_ID + " integer primary key AUTOINCREMENT," +
-            RECIPE_NAME + "TEXT NOT NULL,"+
-            RECIPE_DETAIL + "text NOT NULL,"+
-            RECIPE_AVATAR + "TEXT NOT NULL)";
+            RECIPE_NAME + " TEXT NOT NULL ,"+
+            RECIPE_DETAIL + " text NOT NULL ,"+
+            RECIPE_AVATAR + " TEXT NOT NULL )";
 
     private static final String TBL_THEME = "theme";
     private static final String THEME_ID = "theme_id";
@@ -72,7 +74,7 @@ public class MyDB extends SQLiteOpenHelper {
 
     private String TBL_CREATE_THEME= "create table " + TBL_THEME + " (" +
             THEME_ID + " integer primary key AUTOINCREMENT," +
-            THEME_NAME + "TEXT UNIQUE)";
+            THEME_NAME + " TEXT UNIQUE )";
 
     private static final String TBL_THEME_RECIPE = "theme_recipe";
 
@@ -86,12 +88,12 @@ public class MyDB extends SQLiteOpenHelper {
 
     private String TBL_CREATE_CATEGORY= "create table " + TBL_CATEGORY + " (" +
             CATEGORY_ID + " integer primary key AUTOINCREMENT," +
-            CATEGORY_NAME + "TEXT UNIQUE)";
+            CATEGORY_NAME + " TEXT UNIQUE)";
 
     private static final String TBL_CATEGORY_RECIPE = "category_recipe";
 
     private String TBL_CREATE_CATEGORY_RECIPE= "create table " + TBL_CATEGORY_RECIPE + " (" +
-            CATEGORY_ID + " integer primary key," +
+            CATEGORY_ID + " integer primary key ," +
             RECIPE_ID + " integer primary key)";
 
     public MyDB(@Nullable Context context) {
@@ -107,10 +109,19 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TBL_CREATE_THEME_RECIPE);
         sqLiteDatabase.execSQL(TBL_CREATE_THEME);
         sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY);
+        sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY_RECIPE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_NOTE);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_USER);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_WISHLIST);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_RECIPE);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_THEME_RECIPE);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_THEME);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_CATEGORY);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_CATEGORY_RECIPE);
+        onCreate(sqLiteDatabase);
     }
 }
