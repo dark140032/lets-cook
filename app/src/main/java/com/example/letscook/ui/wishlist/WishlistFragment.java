@@ -88,6 +88,7 @@ public class WishlistFragment extends Fragment {
             // if no item is added in filtered list we are
             // displaying a toast message as no data found.
             congThucAdapter.filterList(listSanPham);
+            Toast.makeText(getContext(),"Deo co 1",Toast.LENGTH_SHORT).show();
 
         } else {
             // at last we are passing that filtered
