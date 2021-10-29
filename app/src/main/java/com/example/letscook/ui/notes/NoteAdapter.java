@@ -1,10 +1,13 @@
 package com.example.letscook.ui.notes;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,10 +25,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     Context context;
     ArrayList<Note> listNote;
 
-    public NoteAdapter(Context applicationContext, ArrayList<Note> listNote) {
+    public NoteAdapter(Context context, ArrayList<Note> listNote) {
         this.context = context;
         this.listNote = listNote;
     }
+
 
     @NonNull
     @Override
@@ -46,7 +50,26 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         holder.txttitlenotes.setText(note.getTitle());
         holder.txtdatenoteslast.setText(note.getDatelast());
         holder.txtcontentnotes.setText(note.getContent());
+
+        holder.layoutItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(context,NoteDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_note", note);
+                intent1.putExtras(bundle);
+                context.startActivity(intent1);
+            }
+        });
     }
+
+//    private void onclickGoToDetail(Note note){
+//        Intent intent1 = new Intent(context,NoteDetailActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("object_note", note);
+//        intent1.putExtras(bundle);
+//        context.startActivity(intent1);
+//    }
 
     @Override
     public int getItemCount() {
@@ -54,6 +77,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout layoutItem;
         TextView txttitlenotes;
         TextView txtdatenoteslast;
         TextView txtcontentnotes;
@@ -62,7 +86,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             txttitlenotes = itemView.findViewById(R.id.txttitlenotes);
             txtdatenoteslast = itemView.findViewById(R.id.txtdatenoteslast);
             txtcontentnotes = itemView.findViewById(R.id.txtcontentnotes);
+            layoutItem = itemView.findViewById(R.id.layout_item);
         }
+    }
+
+    public void release(){
+        context = null;
     }
 
 }

@@ -10,7 +10,7 @@
         android:layout_height="20dp"
         android:layout_marginTop="4dp"
         android:background="#00FFFFFF"
-        android:src="@drawable/vector_black"
+        android:src="@drawable/ic_back_screen_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
             android:id="@+id/imageChuDe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/image_14" />
 
         <LinearLayout
@@ -47,7 +47,6 @@
                 android:id="@+id/textChuDe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Hambuger"
@@ -71,7 +70,7 @@
             android:id="@+id/imageChuDe2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/image_14" />
 
         <LinearLayout
@@ -85,7 +84,6 @@
                 android:id="@+id/textChuDe2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Hambuger"
