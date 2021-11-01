@@ -14,25 +14,24 @@
         android:id="@+id/textView"
         android:layout_width="111dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:layout_marginStart="30dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Nấu ăn thôi !"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent" />
 
+        app:layout_constraintBottom_toTopOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="170dp"
         android:layout_height="47dp"
         android:layout_marginBottom="12dp"
-        android:background="@drawable/border3"
         android:text="ĐĂNG NHẬP"
+        android:background="@drawable/border3"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/btn_register"
         app:layout_constraintEnd_toEndOf="parent"

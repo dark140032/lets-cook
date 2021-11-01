@@ -1,43 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/style2"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Hồ sơ cá nhân"
+            android:textColor="@color/white"
+            android:textSize="18dp" />
+    </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck">
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteY="10dp"
+        android:layout_marginBottom="60dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="409dp"
+            android:layout_height="729dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/imageFilterView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/cay"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/style_profile"
+                android:orientation="horizontal">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageFilterView">
+                    <ImageView
+                        android:id="@+id/imgView_avatar"
+                        android:layout_width="95dp"
+                        android:layout_height="120dp"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerCrop"
+                        app:cardCornerRadius="30dp"
+                        android:src="@drawable/hambeger" />
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:layout_weight="6"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/edt_fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:paddingLeft="10dp"
+                        android:text="Trương Khánh Toàn"
+                        android:textSize="20dp"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:gravity="center_vertical"
+                        android:textStyle="bold"
+                        android:enabled="false"
+                        />
+
+                    <EditText
+                        android:id="@+id/edt_email"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:text="truongkhanhtoan@gmail.com"
+                        android:textSize="15dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:enabled="false"
+                        />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/imgBtn_editProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.5"
+                    android:backgroundTint="#00000000"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:src="@drawable/ic_edit_profile"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Giới thiệu"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_birthDay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
+                    android:paddingLeft="10dp"
+                    android:text="Ngày sinh"
+                    android:textColor="#c4c4c4"
+                    android:textSize="15dp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <EditText
+                    android:id="@+id/edt_birthDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/style_profile"
+                    android:gravity="center_vertical"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="10dp"
+                    android:text="23/10/2000"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"
+                    android:enabled="false"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_job"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Nghề nghiệp"
+                    android:textColor="#c4c4c4"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/edt_job"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/style_profile"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:text="Lập trình viên"
+                    android:textSize="15dp"
+                    android:enabled="false"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Miêu tả bản thân"
+                    android:textColor="#c4c4c4"/>
+
+                <EditText
+                    android:id="@+id/edt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@drawable/style_profile"
+                    android:gravity="top"
+                    android:inputType="text|textMultiLine"
+                    android:padding="10dp"
+                    android:textColor="@color/black"
+                    android:enabled="false"
+                    android:text=" Nấu ăn là phải tập trung, bạn cần học được cái tĩnh trong tâm hồn như bạn đang đi trong một khu rừng vắng, như thế món ăn mới được nấu ra một cách tinh tế nhất !"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutBtnMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_changePassword"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#747474"
+                    android:text="Đổi mật khẩu" />
+
+                <Button
+                    android:id="@+id/btn_logOut"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FF0000"
+                    android:text="Đăng xuất" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutBtnEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+                <Button
+                    android:id="@+id/btn_cancel_edit_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E8E8E8"
+                    android:text="Hủy"
+                    android:textColor="@color/black"/>
+
+                <Button
+                    android:id="@+id/btn_update_profile"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#6BCBFF"
+                    android:text="Cập nhật" />
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
