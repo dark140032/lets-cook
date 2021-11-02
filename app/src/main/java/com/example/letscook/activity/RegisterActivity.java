@@ -1,8 +1,10 @@
-package com.example.letscook;
+package com.example.letscook.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.letscook.R;
 
 
 public class RegisterActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.letscook;
+package com.example.letscook.activity;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.letscook.R;
 import com.example.letscook.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
