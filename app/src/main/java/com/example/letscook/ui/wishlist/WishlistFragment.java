@@ -32,7 +32,6 @@ public class WishlistFragment extends Fragment {
         wishlistViewModel =
                 new ViewModelProvider(this).get(WishlistViewModel.class);
 
-
         binding = FragmentWishlistBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -46,6 +45,7 @@ public class WishlistFragment extends Fragment {
         listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay1"));
         listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay2"));
         listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay3"));
+
         congThucAdapter=new CongThucAdapter(getContext(),listSanPham);
         recyclerView.setAdapter(congThucAdapter);
 
