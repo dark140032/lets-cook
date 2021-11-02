@@ -1,15 +1,18 @@
 package com.example.letscook.model;
 
-public class Note {
-    private int noteId;
+import java.io.Serializable;
+
+public class Note implements Serializable {
+    private String noteId;
     private String noteName;
     private String noteContent;
     private String frstRegistPttm;
     private String userId;
+
     public Note() {
     }
 
-    public Note(int noteId, String noteName, String noteContent, String frstRegistPttm, String userId) {
+    public Note(String noteId, String noteName, String noteContent, String frstRegistPttm, String userId) {
         this.noteId = noteId;
         this.noteName = noteName;
         this.noteContent = noteContent;
@@ -17,11 +20,11 @@ public class Note {
         this.userId = userId;
     }
 
-    public int getNoteId() {
+    public String getNoteId() {
         return noteId;
     }
 
-    public void setNoteId(int noteId) {
+    public void setNoteId(String noteId) {
         this.noteId = noteId;
     }
 
