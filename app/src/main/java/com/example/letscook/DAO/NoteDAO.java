@@ -34,7 +34,7 @@ public class NoteDAO {
         if (cursorCourses.moveToFirst()) {
             do {
                 courseModalArrayList.add(new Note(
-                        cursorCourses.getInt(0),
+                        cursorCourses.getString(0),
                         cursorCourses.getString(1),
                         cursorCourses.getString(2),
                         cursorCourses.getString(3),
@@ -45,7 +45,7 @@ public class NoteDAO {
         return courseModalArrayList;
     }
 
-    public void delete(long _id){
+    public void delete(String _id){
         database.delete(MyDB.TBL_NOTE,
                 MyDB.NOTE_ID + " = " + _id,
                 null);
@@ -60,7 +60,7 @@ public class NoteDAO {
         database.insert(MyDB.TBL_NOTE, null,contentValues);
     }
 
-    public int update (long _id, String name, String contentNote){
+    public int update (String _id, String name, String contentNote){
         ContentValues contentValues = new ContentValues();
         contentValues.put(MyDB.NOTE_NAME, name);
         contentValues.put(MyDB.NOTE_CONTENT, contentNote);

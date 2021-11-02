@@ -1,7 +1,10 @@
 package com.example.letscook.ui.notes;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +13,12 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letscook.DAO.NoteDAO;
 import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentNotesBinding;
 
@@ -23,15 +29,16 @@ public class NotesFragment extends Fragment {
 
     private NotesViewModel homeViewModel;
     private FragmentNotesBinding binding;
-
+    private NoteDAO noteDAO;
     RecyclerView recyclerView;
-    ArrayList<Note> listNote;
+    ImageButton btnDeleteNote;
+
     NoteAdapter noteAdapter;
     ImageButton btnAddNote;
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        Log.e("TAG", "rfirefdsf: " );
         homeViewModel =
                 new ViewModelProvider(this).get(NotesViewModel.class);
 
@@ -43,18 +50,20 @@ public class NotesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), NoteDetailActivity.class);
+                intent.putExtra("add", true);
                 v.getContext().startActivity(intent);
             }
         });
 
+        noteDAO =new NoteDAO(getContext());
+        noteDAO.open();
+        ArrayList<Note> listNote = noteDAO.getAll();
         recyclerView= root.findViewById(R.id.recyclerviewnotes);
-        listNote=new ArrayList<>();
+
+        listNote.add(new Note("","note1","aaaaaaaaa","20/20/2021","1"));
 
         noteAdapter=new NoteAdapter(getContext(),listNote);
         recyclerView.setAdapter(noteAdapter);
-
-
-
 
         return root;
     }
@@ -67,4 +76,6 @@ public class NotesFragment extends Fragment {
             noteAdapter.release();
         }
     }
+
+
 }

@@ -21,10 +21,10 @@ public class MyDB extends SQLiteOpenHelper {
 
     public String TBL_CREATE_NOTE = " create table " + TBL_NOTE + " (" +
             NOTE_ID + " integer primary key ," +
-            USER_ID + " INTEGER ," +
             NOTE_NAME + " text UNIQUE ," +
             NOTE_CONTENT + " text ," +
             FIRT_REGISTER_PTTM + " text ,"+
+            USER_ID + " INTEGER ," +
             " FOREIGN KEY(" + USER_ID + ") REFERENCES "+ TBL_USER + "(" + USER_ID + "))";
 
     public static final String TBL_USER = "user";
@@ -118,14 +118,14 @@ public class MyDB extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_NOTE);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_USER);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_WISHLIST);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_RECIPE);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_THEME_RECIPE);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_THEME);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_CATEGORY);
-        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_CATEGORY_RECIPE);
-        onCreate(sqLiteDatabase);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_NOTE);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_USER);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_WISHLIST);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_RECIPE);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_THEME_RECIPE);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_THEME);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_CATEGORY);
+//        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_CATEGORY_RECIPE);
+//        onCreate(sqLiteDatabase);
     }
 }

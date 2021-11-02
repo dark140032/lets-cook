@@ -21,6 +21,7 @@ import com.example.letscook.model.Note;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import com.example.letscook.DAO.NoteDAO;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     Context context;
@@ -62,14 +63,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
             }
         });
     }
-
-//    private void onclickGoToDetail(Note note){
-//        Intent intent1 = new Intent(context,NoteDetailActivity.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("object_note", note);
-//        intent1.putExtras(bundle);
-//        context.startActivity(intent1);
-//    }
 
     @Override
     public int getItemCount() {
