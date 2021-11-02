@@ -47,54 +47,54 @@ public class MyDB extends SQLiteOpenHelper {
             JOB + " TEXT ," +
             USER_DESCRIPTION + " TEXT )";
 
-    private static final String TBL_WISHLIST = "wishlist";
-    private static final String WISHLIST_ID = "wishlist_id";
+    public static final String TBL_WISHLIST = "wishlist";
+    public static final String WISHLIST_ID = "wishlist_id";
 
-    private String TBL_CREATE_WISHLIST = "create table " + TBL_WISHLIST + " (" +
+    public String TBL_CREATE_WISHLIST = "create table " + TBL_WISHLIST + " (" +
             WISHLIST_ID + " integer primary key AUTOINCREMENT," +
             USER_ID + " INTEGER UNIQUE,"+
             RECIPE_ID + " INTEGER UNIQUE," +
             " FOREIGN KEY(" + RECIPE_ID + ") REFERENCES "+ TBL_RECIPE + "(" + RECIPE_ID + "),"+
             " FOREIGN KEY(" + USER_ID + ") REFERENCES "+ TBL_USER + "(" + USER_ID + "))";
 
-    private static final String TBL_RECIPE = "recipe";
-    private static final String RECIPE_ID = "recipe_id";
-    private static final String RECIPE_NAME = "recipe_name";
-    private static final String RECIPE_DETAIL = "recipe_detail";
-    private static final String RECIPE_AVATAR = "recipe_avatar";
+    public static final String TBL_RECIPE = "recipe";
+    public static final String RECIPE_ID = "recipe_id";
+    public static final String RECIPE_NAME = "recipe_name";
+    public static final String RECIPE_DETAIL = "recipe_detail";
+    public static final String RECIPE_AVATAR = "recipe_avatar";
 
-    private String TBL_CREATE_RECIPE= "create table " + TBL_RECIPE + " (" +
+    public String TBL_CREATE_RECIPE= "create table " + TBL_RECIPE + " (" +
             RECIPE_ID + " integer primary key AUTOINCREMENT," +
             RECIPE_NAME + " TEXT NOT NULL ,"+
             RECIPE_DETAIL + " text NOT NULL ,"+
             RECIPE_AVATAR + " TEXT NOT NULL )";
 
-    private static final String TBL_THEME = "theme";
-    private static final String THEME_ID = "theme_id";
-    private static final String THEME_NAME = "theme_name";
+    public static final String TBL_THEME = "theme";
+    public static final String THEME_ID = "theme_id";
+    public static final String THEME_NAME = "theme_name";
 
-    private String TBL_CREATE_THEME= "create table " + TBL_THEME + " (" +
+    public String TBL_CREATE_THEME= "create table " + TBL_THEME + " (" +
             THEME_ID + " integer primary key AUTOINCREMENT," +
             THEME_NAME + " TEXT UNIQUE )";
 
-    private static final String TBL_THEME_RECIPE = "theme_recipe";
+    public static final String TBL_THEME_RECIPE = "theme_recipe";
 
-    private String TBL_CREATE_THEME_RECIPE= "create table " + TBL_THEME_RECIPE + " (" +
+    public String TBL_CREATE_THEME_RECIPE= "create table " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " integer, " +
             RECIPE_ID + " integer, "+
             " CONSTRAINT " +  TBL_THEME_RECIPE + " PRIMARY KEY (" + THEME_ID+ "," + RECIPE_ID +  "))";
 
-    private static final String TBL_CATEGORY = "category";
-    private static final String CATEGORY_ID = "category_id";
-    private static final String CATEGORY_NAME = "category_name";
+    public static final String TBL_CATEGORY = "category";
+    public static final String CATEGORY_ID = "category_id";
+    public static final String CATEGORY_NAME = "category_name";
 
-    private String TBL_CREATE_CATEGORY= "create table " + TBL_CATEGORY + " (" +
+    public String TBL_CREATE_CATEGORY= "create table " + TBL_CATEGORY + " (" +
             CATEGORY_ID + " integer primary key AUTOINCREMENT," +
             CATEGORY_NAME + " TEXT UNIQUE)";
 
-    private static final String TBL_CATEGORY_RECIPE = "category_recipe";
+    public static final String TBL_CATEGORY_RECIPE = "category_recipe";
 
-    private String TBL_CREATE_CATEGORY_RECIPE= "create table " + TBL_CATEGORY_RECIPE + " (" +
+    public String TBL_CREATE_CATEGORY_RECIPE= "create table " + TBL_CATEGORY_RECIPE + " (" +
             CATEGORY_ID + " integer ," +
             RECIPE_ID + " integer ,"+
             " CONSTRAINT " +  TBL_CATEGORY_RECIPE + " PRIMARY KEY (" + CATEGORY_ID+ "," + RECIPE_ID +  "))";
