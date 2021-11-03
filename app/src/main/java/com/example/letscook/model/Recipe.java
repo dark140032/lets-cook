@@ -1,6 +1,8 @@
 package com.example.letscook.model;
 
-public class Recipe {
+import java.io.Serializable;
+
+public class Recipe implements Serializable {
     private String recipeId;
     private String recipeName;
     private String recipeDetail;

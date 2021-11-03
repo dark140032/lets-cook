@@ -59,4 +59,10 @@ public class WishlistDAO {
         return courseModalArrayList;
     }
 
+    public void delete(String _id_recipe, String _id_user){
+        database.delete(TBL_WISHLIST,
+                USER_ID + " = " + _id_user + " AND " + RECIPE_ID + " = " + _id_recipe ,
+                null);
+    }
+
 }

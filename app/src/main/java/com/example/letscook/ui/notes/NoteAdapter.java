@@ -58,6 +58,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
                 context.startActivity(intent1);
             }
         });
+
     }
 
     @Override
