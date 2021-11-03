@@ -1,6 +1,7 @@
 package com.example.letscook.ui.wishlist;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letscook.R;
+import com.example.letscook.model.Recipe;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class CongThucAdapter extends RecyclerView.Adapter<CongThucAdapter.ViewHolder>{
+public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHolder>{
     Context context;
-    ArrayList<CongThuc> listSanPham;
+    ArrayList<Recipe> listRecipe;
 
-    public CongThucAdapter(Context applicationContext, ArrayList<CongThuc> listSanPham) {
+    public WishlistAdapter(Context applicationContext, ArrayList<Recipe> listRecipe) {
         this.context = context;
-        this.listSanPham = listSanPham;
+        this.listRecipe = listRecipe;
     }
 
     @NonNull
@@ -38,33 +40,34 @@ public class CongThucAdapter extends RecyclerView.Adapter<CongThucAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CongThuc congThuc = listSanPham.get(position);
-        holder.anhcongthuc.setImageResource(congThuc.getImage());
+        Recipe recipe = listRecipe.get(position);
+//        holder.recipeAvatar.setImageResource("@drawable/" + recipe.getRecipeAvatar());
+        holder.recipeAvatar.setImageResource(R.drawable.hambeger);
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        holder.txtName.setText(congThuc.getName());
+        holder.txtName.setText(recipe.getRecipeName());
     }
 
     @Override
     public int getItemCount() {
-        return listSanPham.size();
+        return listRecipe.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView anhcongthuc;
+        ImageView recipeAvatar;
         TextView txtName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            anhcongthuc = itemView.findViewById(R.id.anhcongthuc);
+            recipeAvatar = itemView.findViewById(R.id.anhcongthuc);
             txtName = itemView.findViewById(R.id.txtName);
         }
     }
 
     // method for filtering our recyclerview items.
-    public void filterList(ArrayList<CongThuc> filterllist) {
+    public void filterList(ArrayList<Recipe> filterllist) {
         // below line is to add our filtered
         // list in our course array list.
-        listSanPham = filterllist;
+        listRecipe = filterllist;
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();

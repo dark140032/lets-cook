@@ -1,6 +1,7 @@
 package com.example.letscook.ui.wishlist;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.letscook.MainActivity;
+import com.example.letscook.DAO.NoteDAO;
+import com.example.letscook.DAO.WishlistDAO;
 import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentWishlistBinding;
+import com.example.letscook.model.Note;
+import com.example.letscook.model.Recipe;
 
 import java.util.ArrayList;
 
@@ -26,8 +30,9 @@ public class WishlistFragment extends Fragment {
     private FragmentWishlistBinding binding;
 
     RecyclerView recyclerView;
-    ArrayList<CongThuc> listSanPham;
-    CongThucAdapter congThucAdapter;
+    ArrayList<Recipe> listRecipe;
+    WishlistAdapter congThucAdapter;
+    WishlistDAO wishlistDAO;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,18 +42,14 @@ public class WishlistFragment extends Fragment {
         binding = FragmentWishlistBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        wishlistDAO =new WishlistDAO(getContext());
+        wishlistDAO.open();
+        ArrayList<Recipe> listRecipe = wishlistDAO.getAllWishlist("1");
         recyclerView= root.findViewById(R.id.recyclerview);
-        listSanPham=new ArrayList<>();
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay1"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay2"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay3"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay1"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay2"));
-        listSanPham.add(new CongThuc(R.drawable.hambeger, "ga cay3"));
 
-        congThucAdapter=new CongThucAdapter(getContext(),listSanPham);
+        listRecipe.size();
+
+        congThucAdapter=new WishlistAdapter(getContext(),listRecipe);
         recyclerView.setAdapter(congThucAdapter);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(null, 2);
@@ -64,37 +65,60 @@ public class WishlistFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                filter(newText);
+
+                ArrayList<Recipe> filteredlist = new ArrayList<>();
+                // running a for loop to compare elements.
+
+                for (Recipe item : listRecipe) {
+                    // checking if the entered string matched with any item of our recycler view.
+                    if (item.getRecipeName().toLowerCase().contains(newText.toLowerCase())) {
+                        // if the item is matched we are
+                        // adding it to our filtered list.
+                        filteredlist.add(item);
+                    }
+                }
+                if (filteredlist.isEmpty()) {
+                    // if no item is added in filtered list we are
+                    // displaying a toast message as no data found.
+                    congThucAdapter.filterList(filteredlist);
+                    Toast.makeText(getContext(), "Not Found!", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    // at last we are passing that filtered
+                    // list to our adapter class.
+                    congThucAdapter.filterList(filteredlist);
+                }
+
                 return false;
             }
         });
         return root;
     }
 
-    private void filter(String text) {
-        // creating a new array list to filter our data.
-        ArrayList<CongThuc> filteredlist = new ArrayList<>();
-
-        // running a for loop to compare elements.
-        for (CongThuc item : listSanPham) {
-            // checking if the entered string matched with any item of our recycler view.
-            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
-                // if the item is matched we are
-                // adding it to our filtered list.
-                filteredlist.add(item);
-            }
-        }
-        if (filteredlist.isEmpty()) {
-            // if no item is added in filtered list we are
-            // displaying a toast message as no data found.
-            congThucAdapter.filterList(listSanPham);
-
-        } else {
-            // at last we are passing that filtered
-            // list to our adapter class.
-            congThucAdapter.filterList(filteredlist);
-        }
-    }
+//    private void filter(String text) {
+//        // creating a new array list to filter our data.
+//        ArrayList<Recipe> filteredlist = new ArrayList<>();
+//        // running a for loop to compare elements.
+//
+//            for (Recipe item : listRecipe) {
+//                // checking if the entered string matched with any item of our recycler view.
+//                if (item.getRecipeName().toLowerCase().contains(text.toLowerCase())) {
+//                    // if the item is matched we are
+//                    // adding it to our filtered list.
+//                    filteredlist.add(item);
+//                }
+//            }
+//        if (filteredlist.isEmpty()) {
+//            // if no item is added in filtered list we are
+//            // displaying a toast message as no data found.
+//            congThucAdapter.filterList(listRecipe);
+//
+//        } else {
+//            // at last we are passing that filtered
+//            // list to our adapter class.
+//            congThucAdapter.filterList(filteredlist);
+//        }
+//    }
 
     @Override
     public void onDestroyView() {

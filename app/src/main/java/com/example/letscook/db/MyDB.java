@@ -41,37 +41,37 @@ public class MyDB extends SQLiteOpenHelper {
             USER_ID + " integer primary key AUTOINCREMENT ," +
             USER_NAME + " TEXT NOT NULL ," +
             EMAIL + " TEXT NOT NULL UNIQUE ," +
-            PASSWORD + "TEXT NOT NULL , " +
+            PASSWORD + " TEXT NOT NULL , " +
             USER_AVATAR + " TEXT ," +
             DATE_OF_BIRTH + " text ,"+
             JOB + " TEXT ," +
             USER_DESCRIPTION + " TEXT )";
 
-    private static final String TBL_WISHLIST = "wishlist";
-    private static final String WISHLIST_ID = "wishlist_id";
+    public static final String TBL_WISHLIST = "wishlist";
+    public static final String WISHLIST_ID = "wishlist_id";
 
-    private String TBL_CREATE_WISHLIST = "create table " + TBL_WISHLIST + " (" +
+    public String TBL_CREATE_WISHLIST = "create table " + TBL_WISHLIST + " (" +
             WISHLIST_ID + " integer primary key AUTOINCREMENT," +
-            USER_ID + " INTEGER UNIQUE,"+
-            RECIPE_ID + " INTEGER UNIQUE," +
+            USER_ID + " INTEGER ,"+
+            RECIPE_ID + " INTEGER ," +
             " FOREIGN KEY(" + RECIPE_ID + ") REFERENCES "+ TBL_RECIPE + "(" + RECIPE_ID + "),"+
             " FOREIGN KEY(" + USER_ID + ") REFERENCES "+ TBL_USER + "(" + USER_ID + "))";
 
-    private static final String TBL_RECIPE = "recipe";
-    private static final String RECIPE_ID = "recipe_id";
-    private static final String RECIPE_NAME = "recipe_name";
-    private static final String RECIPE_DETAIL = "recipe_detail";
-    private static final String RECIPE_AVATAR = "recipe_avatar";
+    public static final String TBL_RECIPE = "recipe";
+    public static final String RECIPE_ID = "recipe_id";
+    public static final String RECIPE_NAME = "recipe_name";
+    public static final String RECIPE_DETAIL = "recipe_detail";
+    public static final String RECIPE_AVATAR = "recipe_avatar";
 
-    private String TBL_CREATE_RECIPE= "create table " + TBL_RECIPE + " (" +
+    public String TBL_CREATE_RECIPE= "create table " + TBL_RECIPE + " (" +
             RECIPE_ID + " integer primary key AUTOINCREMENT," +
             RECIPE_NAME + " TEXT NOT NULL ,"+
             RECIPE_DETAIL + " text NOT NULL ,"+
             RECIPE_AVATAR + " TEXT NOT NULL )";
 
-    private static final String TBL_THEME = "theme";
-    private static final String THEME_ID = "theme_id";
-    private static final String THEME_NAME = "theme_name";
+    public static final String TBL_THEME = "theme";
+    public static final String THEME_ID = "theme_id";
+    public static final String THEME_NAME = "theme_name";
 
     private String TBL_CREATE_THEME= "create table " + TBL_THEME + " (" +
             THEME_ID + " integer primary key AUTOINCREMENT," +
@@ -99,6 +99,48 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_ID + " integer ,"+
             " CONSTRAINT " +  TBL_CATEGORY_RECIPE + " PRIMARY KEY (" + CATEGORY_ID+ "," + RECIPE_ID +  "))";
 
+    private String QUE_INSERT_USER= "insert into " + TBL_USER + " (" +
+            USER_NAME + " , " +
+            EMAIL + " , " +
+            PASSWORD + " , " +
+            USER_AVATAR + " , " +
+            DATE_OF_BIRTH + " , " +
+            JOB + " , " +
+            USER_DESCRIPTION + " )" +
+            "VALUES ( " +
+            "'DUC', 'DUC', 'DUC', 'DUC', 'DUC', 'DUC', 'DUC' " +
+            ")";
+
+    private String QUE_INSERT_RECIPE= "insert into " + TBL_RECIPE + " (" +
+            RECIPE_NAME + " , " +
+            RECIPE_DETAIL + " , " +
+            RECIPE_AVATAR + " ) " +
+            "VALUES ( " +
+            "'DUC', 'DUC', 'hambeger' " +
+            ")";
+    private String QUE_INSERT_RECIPE1= "insert into " + TBL_RECIPE + " (" +
+            RECIPE_NAME + " , " +
+            RECIPE_DETAIL + " , " +
+            RECIPE_AVATAR + " ) " +
+            "VALUES ( " +
+            "'DUC1', 'DUC1', 'hambeger' " +
+            ")";
+
+    private String QUE_INSERT_WISHLIST= "insert into " + TBL_WISHLIST + " (" +
+            USER_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "'1', '1'" +
+            ")";
+    private String QUE_INSERT_WISHLIST1= "insert into " + TBL_WISHLIST + " (" +
+            USER_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "'1', '2'" +
+            ")";
+
     public MyDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("okie", "MyDB:" );
@@ -114,6 +156,11 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TBL_CREATE_THEME);
         sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY);
         sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_USER);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE1);
+        sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST);
+        sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST1);
     }
 
     @Override

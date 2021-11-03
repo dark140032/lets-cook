@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,14 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letscook.R;
-import com.example.letscook.ui.wishlist.CongThuc;
-import com.example.letscook.ui.wishlist.CongThucAdapter;
 import com.example.letscook.model.Note;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-import com.example.letscook.DAO.NoteDAO;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     Context context;

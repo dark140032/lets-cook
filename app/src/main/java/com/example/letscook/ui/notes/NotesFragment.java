@@ -60,8 +60,6 @@ public class NotesFragment extends Fragment {
         ArrayList<Note> listNote = noteDAO.getAll();
         recyclerView= root.findViewById(R.id.recyclerviewnotes);
 
-        listNote.add(new Note("","note1","aaaaaaaaa","20/20/2021","1"));
-
         noteAdapter=new NoteAdapter(getContext(),listNote);
         recyclerView.setAdapter(noteAdapter);
 
@@ -76,6 +74,5 @@ public class NotesFragment extends Fragment {
             noteAdapter.release();
         }
     }
-
 
 }
