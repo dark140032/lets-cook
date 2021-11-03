@@ -21,7 +21,6 @@ import com.example.letscook.model.Note;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class NoteDetailActivity extends AppCompatActivity {
 
     ImageButton btnBackNotes;
