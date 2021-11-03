@@ -36,7 +36,7 @@ public class RecipeDAO {
         dbHelper.close();
     }
 
-    public ArrayList<Recipe> getAllWishlist(String _id) {
+    public ArrayList<Recipe> getAllRecipe() {
         Cursor cursorCourses = database.rawQuery("SELECT rc." + RECIPE_NAME + ", ct." + THEME_NAME +
                 " FROM "+ TBL_RECIPE + " rc " +
                 " INNER JOIN " + TBL_THEME_RECIPE + " trc ON rc." + RECIPE_ID + " = trc." +RECIPE_ID +
