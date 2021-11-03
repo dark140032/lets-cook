@@ -1,5 +1,13 @@
 package com.example.letscook.DAO;
 
+import static com.example.letscook.db.MyDB.RECIPE_ID;
+import static com.example.letscook.db.MyDB.RECIPE_NAME;
+import static com.example.letscook.db.MyDB.TBL_RECIPE;
+import static com.example.letscook.db.MyDB.TBL_THEME;
+import static com.example.letscook.db.MyDB.TBL_THEME_RECIPE;
+import static com.example.letscook.db.MyDB.THEME_ID;
+import static com.example.letscook.db.MyDB.THEME_NAME;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,7 +15,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.letscook.db.MyDB;
-import com.example.letscook.model.Note;
 import com.example.letscook.model.Recipe;
 
 import java.util.ArrayList;
@@ -29,8 +36,11 @@ public class RecipeDAO {
         dbHelper.close();
     }
 
-    public ArrayList<Recipe> getAll() {
-        Cursor cursorCourses = database.rawQuery("SELECT * FROM " + MyDB.TBL_RECIPE, null);
+    public ArrayList<Recipe> getAllWishlist(String _id) {
+        Cursor cursorCourses = database.rawQuery("SELECT rc." + RECIPE_NAME + ", ct." + THEME_NAME +
+                " FROM "+ TBL_RECIPE + " rc " +
+                " INNER JOIN " + TBL_THEME_RECIPE + " trc ON rc." + RECIPE_ID + " = trc." +RECIPE_ID +
+                " INNER JOIN " + TBL_THEME + " th ON th." + THEME_ID + " = trc." + THEME_ID, null);
         ArrayList<Recipe> courseModalArrayList = new ArrayList<>();
         if (cursorCourses.moveToFirst()) {
             do {

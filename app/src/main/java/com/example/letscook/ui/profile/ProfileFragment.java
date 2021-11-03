@@ -73,7 +73,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(),ProfileChangePasswordFragment.class);
-                view.getContext()
+                view.getContext();
             }
         });
         return root;
