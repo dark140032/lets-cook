@@ -1,4 +1,4 @@
-package com.example.letscook;
+package com.example.letscook.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
