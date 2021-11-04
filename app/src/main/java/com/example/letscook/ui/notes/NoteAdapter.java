@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letscook.R;
-import com.example.letscook.ui.wishlist.CongThuc;
-import com.example.letscook.ui.wishlist.CongThucAdapter;
 import com.example.letscook.model.Note;
 
 import java.text.NumberFormat;
@@ -61,15 +58,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
                 context.startActivity(intent1);
             }
         });
-    }
 
-//    private void onclickGoToDetail(Note note){
-//        Intent intent1 = new Intent(context,NoteDetailActivity.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("object_note", note);
-//        intent1.putExtras(bundle);
-//        context.startActivity(intent1);
-//    }
+    }
 
     @Override
     public int getItemCount() {

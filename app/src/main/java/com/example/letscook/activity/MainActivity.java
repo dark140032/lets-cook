@@ -1,4 +1,4 @@
-package com.example.letscook;
+package com.example.letscook.activity;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.letscook.DAO.NoteDAO;
+import com.example.letscook.R;
 import com.example.letscook.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -40,5 +41,4 @@ public class MainActivity extends AppCompatActivity {
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
-
 }

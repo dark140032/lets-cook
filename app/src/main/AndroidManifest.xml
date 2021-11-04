@@ -10,22 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Letscook">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
+        </activity>
+        <activity  android:name=".activity.LoginActivity">
+
+        </activity>
+        <activity  android:name=".activity.RegisterActivity">
+
+        </activity>
+        <activity  android:name=".ui.notes.NoteDetailActivity">
+
+        </activity>
+        <activity android:name=".WelcomeActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity  android:name=".LoginActivity">
+        <activity  android:name=".ui.recipe.RecipeDetailActivity">
 
         </activity>
-        <activity  android:name=".RegisterActivity">
-
-        </activity>
-        <activity  android:name=".ui.notes.NoteDetailActivity">
+        <activity  android:name=".ui.home.ThemeActivity">
 
         </activity>
     </application>

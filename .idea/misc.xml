@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CNFPT/CN7/PRM/lets-cook/app/src/main/res/layout/fragment_profile.xml" value="0.2441123188405797" />
+        <entry key="..\:/CNFPT/CN7/PRM/lets-cook/app/src/main/res/layout/login.xml" value="0.3625" />
+        <entry key="..\:/CNFPT/CN7/PRM/lets-cook/app/src/main/res/layout/register.xml" value="0.3625" />
+        <entry key="..\:/CNFPT/CN7/PRM/lets-cook/app/src/main/res/layout/welcome.xml" value="0.3625" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-anydpi/ic_back_screen_black.xml" value="0.3974358974358974" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-anydpi/ic_back_screen_white.xml" value="0.3974358974358974" />
         <entry key="..\:/FPTSTUDY/CN7/PRM391/ProjectPRM/lets-cook/app/src/main/res/drawable-anydpi/ic_home.xml" value="0.3974358974358974" />
@@ -37,32 +41,6 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Letscook/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Letscook/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Letscook/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.16574074074074074" />
-<<<<<<< Updated upstream
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable-anydpi/ic_Add.xml" value="0.1390625" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable-anydpi/ic_add.xml" value="0.159375" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable/style.xml" value="0.18518518518518517" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable/style2.xml" value="0.18518518518518517" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable/style3.xml" value="0.18518518518518517" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable/style4.xml" value="0.1824074074074074" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/drawable/style5.xml" value="0.1824074074074074" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/layout/fragment_home.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/layout/fragment_notes.xml" value="0.20742753623188406" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/layout/fragment_profile.xml" value="0.2128623188405797" />
-        <entry key="..\:/Users/ADMIN/Desktop/GiaoTrinh/PRM391/lets-cook/app/src/main/res/layout/fragment_wishlist.xml" value="0.2" />
-=======
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable-anydpi/ic_add.xml" value="0.2462962962962963" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable-anydpi/ic_bin.xml" value="0.25092592592592594" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable-anydpi/ic_bin_notes.xml" value="0.25092592592592594" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable-hdpi/style3.xml" value="0.25092592592592594" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable-hdpi/style4.xml" value="0.25092592592592594" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable/style.xml" value="0.2462962962962963" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/drawable/style2.xml" value="0.2462962962962963" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/layout/fragment_notes.xml" value="0.2" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/layout/fragment_profile.xml" value="0.23958333333333334" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/layout/fragment_wishlist.xml" value="0.264" />
-        <entry key="..\:/giao trình/PRM391/lets-cook/app/src/main/res/layout/item_wishlist.xml" value="0.1598731884057971" />
->>>>>>> Stashed changes
       </map>
     </option>
   </component>
@@ -71,5 +49,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>
