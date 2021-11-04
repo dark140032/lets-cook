@@ -48,8 +48,8 @@ public class ThemeActivity extends AppCompatActivity {
             txtThemeNm.setText(themeNm);
             ArrayList<Recipe> recipes = homeDAO.getAllRecipeByThemeId(themeId);
             themeAdapter = new ThemeAdapter(getApplicationContext(),recipes);
-            Log.e("abc", "onCreate: " );
             themeDetailRecyclerView.setAdapter(themeAdapter);
+            themeDetailRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
     }
 }
