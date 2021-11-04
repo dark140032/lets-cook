@@ -1,7 +1,9 @@
 package com.example.letscook.DAO;
 import static com.example.letscook.db.MyDB.RECIPE_AVATAR;
-import static com.example.letscook.db.MyDB.RECIPE_DETAIL;
+import static com.example.letscook.db.MyDB.RECIPE_DES;
 import static com.example.letscook.db.MyDB.RECIPE_ID;
+import static com.example.letscook.db.MyDB.RECIPE_MAKING;
+import static com.example.letscook.db.MyDB.RECIPE_MATERIAL;
 import static com.example.letscook.db.MyDB.RECIPE_NAME;
 import static com.example.letscook.db.MyDB.TBL_RECIPE;
 import static com.example.letscook.db.MyDB.TBL_USER;
@@ -39,7 +41,7 @@ public class WishlistDAO {
     }
 
     public ArrayList<Recipe> getAllWishlist(String _id) {
-        Cursor cursorCourses = database.rawQuery("SELECT ct." + RECIPE_ID + ", ct." + RECIPE_NAME + ", ct." + RECIPE_DETAIL + ", ct." + RECIPE_AVATAR + " \n " +
+        Cursor cursorCourses = database.rawQuery("SELECT ct." + RECIPE_ID + ", ct." + RECIPE_NAME + ", ct." + RECIPE_DES+ ", ct." + RECIPE_MATERIAL+ ", ct." + RECIPE_MAKING + ", ct." + RECIPE_AVATAR + " \n " +
                 " From "+ TBL_USER + " us " + " \n " +
                 " INNER JOIN " + TBL_WISHLIST + " wl ON wl." + USER_ID + " = us." +USER_ID + " \n " +
                 " INNER JOIN " + TBL_RECIPE + " ct on ct." + RECIPE_ID + " = wl." + RECIPE_ID + " \n " +
@@ -52,7 +54,9 @@ public class WishlistDAO {
                         cursorCourses.getString(0),
                         cursorCourses.getString(1),
                         cursorCourses.getString(2),
-                        cursorCourses.getString(3)));
+                        cursorCourses.getString(3),
+                        cursorCourses.getString(4),
+                        cursorCourses.getString(5)));
             } while (cursorCourses.moveToNext());
         }
         cursorCourses.close();

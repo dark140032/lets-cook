@@ -1,27 +1,22 @@
 package com.example.letscook.ui.wishlist;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.SearchView;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.letscook.DAO.NoteDAO;
 import com.example.letscook.DAO.WishlistDAO;
 import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentWishlistBinding;
-import com.example.letscook.model.Note;
 import com.example.letscook.model.Recipe;
 
 import java.util.ArrayList;
@@ -35,6 +30,7 @@ public class WishlistFragment extends Fragment {
     ArrayList<Recipe> listRecipe;
     WishlistAdapter congThucAdapter;
     WishlistDAO wishlistDAO;
+    ImageButton btnDeleteWishlistItem;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,9 +44,6 @@ public class WishlistFragment extends Fragment {
         wishlistDAO.open();
         ArrayList<Recipe> listRecipe = wishlistDAO.getAllWishlist("1");
         recyclerView= root.findViewById(R.id.recyclerview);
-
-        
-
 
         listRecipe.size();
 
@@ -97,6 +90,9 @@ public class WishlistFragment extends Fragment {
                 return false;
             }
         });
+
+
+
         return root;
     }
 

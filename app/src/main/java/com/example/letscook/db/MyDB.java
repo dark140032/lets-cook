@@ -60,13 +60,17 @@ public class MyDB extends SQLiteOpenHelper {
     public static final String TBL_RECIPE = "recipe";
     public static final String RECIPE_ID = "recipe_id";
     public static final String RECIPE_NAME = "recipe_name";
-    public static final String RECIPE_DETAIL = "recipe_detail";
+    public static final String RECIPE_DES = "recipe_des";
+    public static final String RECIPE_MATERIAL = "recipe_material";
+    public static final String RECIPE_MAKING = "recipe_making";
     public static final String RECIPE_AVATAR = "recipe_avatar";
 
     public String TBL_CREATE_RECIPE= "create table " + TBL_RECIPE + " (" +
             RECIPE_ID + " integer primary key AUTOINCREMENT," +
             RECIPE_NAME + " TEXT NOT NULL ,"+
-            RECIPE_DETAIL + " text NOT NULL ,"+
+            RECIPE_DES + " text NOT NULL ,"+
+            RECIPE_MATERIAL + " text NOT NULL ,"+
+            RECIPE_MAKING + " text NOT NULL ,"+
             RECIPE_AVATAR + " TEXT NOT NULL )";
 
     public static final String TBL_THEME = "theme";
@@ -113,17 +117,30 @@ public class MyDB extends SQLiteOpenHelper {
 
     private String QUE_INSERT_RECIPE= "insert into " + TBL_RECIPE + " (" +
             RECIPE_NAME + " , " +
-            RECIPE_DETAIL + " , " +
+            RECIPE_DES + " , " +
+            RECIPE_MATERIAL + " , " +
+            RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'DUC', 'DUC', 'hambeger' " +
+            "'Pizza hải sản', 'Pizza hải sản là món dễ ăn, thơm ngon và được nhiều người yêu thích', 'Tôm sú                300 gr\n" +
+            "Mực ống" +
+            "              200 gr\n" +
+            "Ớt chuông " +
+            "              2 trái\n" +
+            "Phô mai Mozzarella \n" +
+            "Tương cà \n" +
+            "Đế bánh Pizza\n" +
+            "Hành tím \n" +
+            "Bơ ', 'hambeger', 'hambeger' " +
             ")";
     private String QUE_INSERT_RECIPE1= "insert into " + TBL_RECIPE + " (" +
             RECIPE_NAME + " , " +
-            RECIPE_DETAIL + " , " +
+            RECIPE_DES + " , " +
+            RECIPE_MATERIAL + " , " +
+            RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'DUC1', 'DUC1', 'hambeger' " +
+            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
             ")";
 
     private String QUE_INSERT_WISHLIST= "insert into " + TBL_WISHLIST + " (" +

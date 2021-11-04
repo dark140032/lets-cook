@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.search.SearchFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/style2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="18dp"
+                android:text="Công Thức Món Ăn"
+                android:gravity="center"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageButton
+                android:id="@+id/btn_back_recipe_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_screen_black"
+                android:backgroundTint="#006BCBFF"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="311dp"
+                    android:id="@+id/img_recipe_avatar"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/hambeger"
+                    android:contentDescription="TODO"></ImageView>
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="13dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/txt_recipe_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:text="Hamberger"
+                            tools:layout_editor_absoluteX="151dp"
+                            tools:layout_editor_absoluteY="98dp"
+                            android:textSize="30dp"
+                            android:gravity="left"
+                            android:textStyle="bold"
+                            android:layout_weight="9"
+                            android:fontFamily="@font/fontcomfortaa"
+                            />
+                        <ImageButton
+                            android:id="@+id/btn_add_wishlist_blue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_star_blue"
+                            android:backgroundTint="#006BCBFF"
+                            android:layout_weight="1"
+                            />
+                        <ImageButton
+                            android:id="@+id/btn_add_wishlist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_star_black"
+                            android:backgroundTint="#006BCBFF"
+                            android:layout_weight="1"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_recipe_des"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pizza hải sản là món dễ ăn, thơm ngon và được nhiều người yêu thích"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#CCCCCC"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nguyên liệu"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_recipe_material"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tôm sú : 300gr, Mực ống : 200gr, Ớt chuông : 2 trái, Phô mai Mozzarella : 100gr, Tương cà : 1 muỗng canh"
+                        android:textSize="20dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#CCCCCC"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cách làm"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_recipe_making"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="1/Sơ chế và ướp hải sản, 2/Tiến hành nấu"
+                        android:textSize="20dp"
+                        />
+                </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
