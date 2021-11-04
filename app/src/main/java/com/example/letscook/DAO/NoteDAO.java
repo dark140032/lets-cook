@@ -24,7 +24,4 @@ public class NoteDAO {
     public void close(){
         dbHelper.close();
     }
-
-
-
 }

@@ -35,7 +35,6 @@ public class ProfileFragment extends Fragment {
     private ProfileViewModel profileViewModel;
     private FragmentProfileBinding binding;
     private EditText edt_fullname;
-    private EditText edt_email;
     private TextView txt_birthDay;
     private EditText edt_birthDay;
     private TextView txt_job;
@@ -73,7 +72,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(),ProfileChangePasswordFragment.class);
-                view.getContext()
             }
         });
         return root;
@@ -92,13 +90,11 @@ public class ProfileFragment extends Fragment {
         txt_description.setTextColor(BLACK);
 
         edt_fullname.setEnabled(true);
-        edt_email.setEnabled(true);
         edt_birthDay.setEnabled(true);
         edt_job.setEnabled(true);
         edt_description.setEnabled(true);
 
         edt_fullname.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
-        edt_email.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
         edt_birthDay.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
         edt_job.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
         edt_description.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
@@ -112,13 +108,11 @@ public class ProfileFragment extends Fragment {
         txt_description.setTextColor(Color.parseColor("#c4c4c4"));
 
         edt_fullname.setEnabled(false);
-        edt_email.setEnabled(false);
         edt_birthDay.setEnabled(false);
         edt_job.setEnabled(false);
         edt_description.setEnabled(false);
 
         edt_fullname.setBackground(null);
-        edt_email.setBackground(null);
         edt_birthDay.setBackground(getResources().getDrawable(R.drawable.style_profile));
         edt_job.setBackground(getResources().getDrawable(R.drawable.style_profile));
         edt_description.setBackground(getResources().getDrawable(R.drawable.style_profile));
@@ -141,8 +135,6 @@ public class ProfileFragment extends Fragment {
 
         edt_fullname = root.findViewById(R.id.edt_fullname);
         edt_fullname.setText(account.getFullname());
-        edt_email = root.findViewById(R.id.edt_email);
-        edt_email.setText(account.getEmail());
         edt_birthDay = root.findViewById(R.id.edt_birthDay);
         edt_birthDay.setText(account.getBirthDay());
         edt_job = root.findViewById(R.id.edt_job);
