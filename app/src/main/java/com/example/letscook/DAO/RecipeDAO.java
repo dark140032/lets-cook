@@ -48,7 +48,9 @@ public class RecipeDAO {
                         cursorCourses.getString(0),
                         cursorCourses.getString(1),
                         cursorCourses.getString(2),
-                        cursorCourses.getString(3)));
+                        cursorCourses.getString(3),
+                        cursorCourses.getString(4),
+                        cursorCourses.getString(5)));
             } while (cursorCourses.moveToNext());
         }
         cursorCourses.close();
@@ -64,7 +66,9 @@ public class RecipeDAO {
     public void insert(Recipe recipe){
         ContentValues contentValues =new ContentValues();
         contentValues.put(MyDB.RECIPE_NAME,recipe.getRecipeName());
-        contentValues.put(MyDB.RECIPE_DETAIL,recipe.getRecipeDetail());
+        contentValues.put(MyDB.RECIPE_DES,recipe.getRecipeDes());
+        contentValues.put(MyDB.RECIPE_MATERIAL,recipe.getRecipeMaterial());
+        contentValues.put(MyDB.RECIPE_MAKING,recipe.getRecipeMaking());
         contentValues.put(MyDB.RECIPE_AVATAR,recipe.getRecipeAvatar());
         database.insert(MyDB.TBL_RECIPE, null,contentValues);
     }

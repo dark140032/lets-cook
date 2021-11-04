@@ -28,6 +28,9 @@
         <activity  android:name=".ui.notes.NoteDetailActivity">
 
         </activity>
+        <activity  android:name=".ui.recipe.RecipeDetailActivity">
+
+        </activity>
     </application>
 
 </manifest>

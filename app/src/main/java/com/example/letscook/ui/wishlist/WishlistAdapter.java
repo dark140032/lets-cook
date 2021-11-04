@@ -11,13 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letscook.DAO.NoteDAO;
 import com.example.letscook.DAO.WishlistDAO;
 import com.example.letscook.R;
 import com.example.letscook.model.Recipe;
+import com.example.letscook.ui.notes.NoteDetailActivity;
+import com.example.letscook.ui.recipe.RecipeDetailActivity;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -27,8 +31,9 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     Context context;
     ArrayList<Recipe> listRecipe;
     WishlistDAO wishlistDAO;
+    public static String idRecipe;
 
-    public WishlistAdapter(Context applicationContext, ArrayList<Recipe> listRecipe) {
+    public WishlistAdapter(Context context, ArrayList<Recipe> listRecipe) {
         this.context = context;
         this.listRecipe = listRecipe;
     }
@@ -52,19 +57,33 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         holder.txtName.setText(recipe.getRecipeName());
-
+        wishlistDAO =new WishlistDAO(context);
+        wishlistDAO.open();
         holder.btnDeleteWishlistItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                listRecipe.remove(holder.getAdapterPosition());
-//                notifyItemRemoved(holder.getAdapterPosition());
+                listRecipe.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
                 String temp_recipeId = recipe.getRecipeId();
                 Log.e("TAG", "id recipe:  " + temp_recipeId );
+                idRecipe = temp_recipeId;
                 String temp_userId = "1";
-                wishlistDAO.delete(temp_recipeId,temp_userId);
-
+                wishlistDAO.delete(recipe.getRecipeId(),"1");
+                Toast.makeText(context, "xóa Yêu Thích Thành Công!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        holder.recycleview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, RecipeDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_recipe", recipe);
+                i.putExtras(bundle);
+                context.startActivity(i);
+            }
+        });
+
 
     }
 
@@ -87,7 +106,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
             recipeAvatar = itemView.findViewById(R.id.anhcongthuc);
             txtName = itemView.findViewById(R.id.txtName);
             btnDeleteWishlistItem = itemView.findViewById(R.id.btn_delete_wishlist_item);
-            recycleview = itemView.findViewById(R.id.btn_delete_wishlist_item);
+            recycleview = itemView.findViewById(R.id.layout_item_wishlist);
         }
     }
 
