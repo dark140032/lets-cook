@@ -66,7 +66,7 @@ public class NoteDetailActivity extends AppCompatActivity {
             btn_deleteDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    noteDAO.delete(_id);
+                    noteDAO.delete(_id,"1");
                     Toast.makeText(NoteDetailActivity.this, "Delete success!",Toast.LENGTH_LONG);
                     onBackPressed();
                 }
@@ -80,7 +80,7 @@ public class NoteDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String title = txtTitleNote.getText().toString();
                     String content = txtContentNote.getText().toString();
-                    noteDAO.update(_id,title,content);
+                    noteDAO.update(_id,title,content,"1");
                     onBackPressed();
                 }
             });
@@ -99,7 +99,7 @@ public class NoteDetailActivity extends AppCompatActivity {
                     Date d = new Date();
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                     String date= formatter.format(d);
-                    noteDAO.insert(new Note("",title, content,date,""));
+                    noteDAO.insert(new Note("",title, content,date,"1"));
                     onBackPressed();
                 }
             });
