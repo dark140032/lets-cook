@@ -31,6 +31,9 @@
         <activity  android:name=".ui.recipe.RecipeDetailActivity">
 
         </activity>
+        <activity  android:name=".ui.home.ThemeActivity">
+
+        </activity>
     </application>
 
 </manifest>
