@@ -76,10 +76,12 @@ public class MyDB extends SQLiteOpenHelper {
     public static final String TBL_THEME = "theme";
     public static final String THEME_ID = "theme_id";
     public static final String THEME_NAME = "theme_name";
+    public static final String THEME_IMAGE = "theme_image";
 
     public String TBL_CREATE_THEME= "create table " + TBL_THEME + " (" +
             THEME_ID + " integer primary key AUTOINCREMENT," +
-            THEME_NAME + " TEXT UNIQUE )";
+            THEME_NAME + " TEXT UNIQUE," +
+            THEME_IMAGE + " TEXT)";
 
     public static final String TBL_THEME_RECIPE = "theme_recipe";
 
@@ -158,6 +160,27 @@ public class MyDB extends SQLiteOpenHelper {
             "'1', '2'" +
             ")";
 
+    private String QUE_INSERT_THEME= "insert into " + TBL_THEME + " (" +
+            THEME_NAME + " , " +
+            THEME_IMAGE + " ) " +
+
+            "VALUES ( " +
+            "'AN TOI', '' )";
+
+    private String QUE_INSERT_THEME1= "insert into " + TBL_THEME + " (" +
+            THEME_NAME + " , " +
+            THEME_IMAGE + " ) " +
+
+            "VALUES ( " +
+            "'AN SANG' , '')";
+
+    private String QUE_INSERT_THEME2= "insert into " + TBL_THEME + " (" +
+            THEME_NAME + " , " +
+            THEME_IMAGE + " ) " +
+
+            "VALUES ( " +
+            "'AN TRUA' , '')";
+
     public MyDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("okie", "MyDB:" );
@@ -178,6 +201,9 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE1);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST1);
+        sqLiteDatabase.execSQL(QUE_INSERT_THEME);
+        sqLiteDatabase.execSQL(QUE_INSERT_THEME1);
+        sqLiteDatabase.execSQL(QUE_INSERT_THEME2);
     }
 
     @Override

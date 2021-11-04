@@ -31,15 +31,6 @@
             android:textColor="@color/black"
             android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:fontFamily="sans-serif-condensed"
-            android:text="Xem thêm"
-            android:textColor="@color/black" />
     </LinearLayout>
 
     <HorizontalScrollView
@@ -58,6 +49,7 @@
                 tools:listitem="@layout/item_theme"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
+                android:id="@+id/theme_recycleView"
                 >
 
             </androidx.recyclerview.widget.RecyclerView>
