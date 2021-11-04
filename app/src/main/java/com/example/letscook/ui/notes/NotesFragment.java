@@ -57,7 +57,7 @@ public class NotesFragment extends Fragment {
 
         noteDAO =new NoteDAO(getContext());
         noteDAO.open();
-        ArrayList<Note> listNote = noteDAO.getAll();
+        ArrayList<Note> listNote = noteDAO.getAll("1");
         recyclerView= root.findViewById(R.id.recyclerviewnotes);
 
         noteAdapter=new NoteAdapter(getContext(),listNote);

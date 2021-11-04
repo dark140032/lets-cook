@@ -10,6 +10,7 @@ import static com.example.letscook.db.MyDB.TBL_USER;
 import static com.example.letscook.db.MyDB.TBL_WISHLIST;
 import static com.example.letscook.db.MyDB.USER_ID;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -67,6 +68,10 @@ public class WishlistDAO {
         database.delete(TBL_WISHLIST,
                 USER_ID + " = " + _id_user + " AND " + RECIPE_ID + " = " + _id_recipe ,
                 null);
+    }
+
+    public void insert(String _id_recipe, String _id_user){
+        database.insert(TBL_WISHLIST,"( " + USER_ID + " , "+ RECIPE_ID + " )\n values ( " + _id_user + " , " + _id_recipe + " ) "  , null );
     }
 
 }

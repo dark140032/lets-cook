@@ -1,5 +1,7 @@
 package com.example.letscook.DAO;
 
+import static com.example.letscook.db.MyDB.USER_ID;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -28,8 +30,8 @@ public class NoteDAO {
         dbHelper.close();
     }
 
-    public ArrayList<Note> getAll() {
-        Cursor cursorCourses = database.rawQuery("SELECT * FROM " + MyDB.TBL_NOTE, null);
+    public ArrayList<Note> getAll(String _idUser) {
+        Cursor cursorCourses = database.rawQuery("SELECT * FROM " + MyDB.TBL_NOTE + "\n where " + USER_ID + " = " + _idUser, null);
         ArrayList<Note> courseModalArrayList = new ArrayList<>();
         if (cursorCourses.moveToFirst()) {
             do {
@@ -45,9 +47,9 @@ public class NoteDAO {
         return courseModalArrayList;
     }
 
-    public void delete(String _id){
+    public void delete(String _id , String _idUser){
         database.delete(MyDB.TBL_NOTE,
-                MyDB.NOTE_ID + " = " + _id,
+                MyDB.NOTE_ID + " = " + _id + " and " + USER_ID + " = " + _idUser ,
                 null);
     }
 
@@ -55,18 +57,18 @@ public class NoteDAO {
         ContentValues contentValues =new ContentValues();
         contentValues.put(MyDB.NOTE_NAME,note.getNoteName());
         contentValues.put(MyDB.NOTE_CONTENT,note.getNoteContent());
-        contentValues.put(MyDB.USER_ID,note.getUserId());
+        contentValues.put(USER_ID,note.getUserId());
         contentValues.put(MyDB.FIRT_REGISTER_PTTM,note.getFrstRegistPttm());
         database.insert(MyDB.TBL_NOTE, null,contentValues);
     }
 
-    public int update (String _id, String name, String contentNote){
+    public int update (String _id, String name, String contentNote, String _idUser){
         ContentValues contentValues = new ContentValues();
         contentValues.put(MyDB.NOTE_NAME, name);
         contentValues.put(MyDB.NOTE_CONTENT, contentNote);
         int i =database.update(MyDB.TBL_NOTE,
                 contentValues, MyDB.NOTE_ID
-                        + " = " + _id, null);
+                        + " = " + _id + " and " + USER_ID + " = " + _idUser, null);
         return i;
     }
 
