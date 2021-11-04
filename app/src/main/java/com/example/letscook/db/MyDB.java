@@ -181,6 +181,27 @@ public class MyDB extends SQLiteOpenHelper {
             "VALUES ( " +
             "'AN TRUA' , '')";
 
+    private String QUE_INSERT_THEME_RECIPE= "insert into " + TBL_THEME_RECIPE + " (" +
+            THEME_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "1 , 2)";
+
+    private String QUE_INSERT_THEME_RECIPE1 = "insert into " + TBL_THEME_RECIPE + " (" +
+            THEME_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "1 , 1)";
+
+    private String QUE_INSERT_THEME_RECIPE2 = "insert into " + TBL_THEME_RECIPE + " (" +
+            THEME_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 2)";
+
     public MyDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("okie", "MyDB:" );
@@ -204,6 +225,9 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_THEME);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME1);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME2);
+        sqLiteDatabase.execSQL(QUE_INSERT_THEME_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_THEME_RECIPE1);
+        sqLiteDatabase.execSQL(QUE_INSERT_THEME_RECIPE2);
     }
 
     @Override

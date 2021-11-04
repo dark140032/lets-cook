@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
         ArrayList<Theme> themes = homeDAO.getAllTheme();
         recipeAdapter = new HomeAdapter(getContext(),themes);
         recyclerView.setAdapter(recipeAdapter);
+
       /*  final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
