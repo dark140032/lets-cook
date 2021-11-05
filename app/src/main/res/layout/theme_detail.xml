@@ -30,13 +30,19 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+            <ImageButton
+                android:id="@+id/btn_back_theme_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_screen_black"
+                android:backgroundTint="#006BCBFF"
+                />
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_height="120dp"
               android:orientation="horizontal"
               android:layout_marginStart="17dp"
               android:layout_marginEnd="17dp"
-              android:layout_marginTop="30dp"
               android:background="@drawable/border4"
               >
               <ImageView
