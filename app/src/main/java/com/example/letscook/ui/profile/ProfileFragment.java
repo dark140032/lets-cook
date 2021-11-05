@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentProfileBinding;
+import com.example.letscook.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,6 +47,15 @@ public class ProfileFragment extends Fragment {
     private LinearLayout ll_ButonEdit;
     public View root;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        //Get user đã đăng nhập tại code này
+        Intent intent = this.getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        User user = (User) bundle.getSerializable("object_user");
+        //
+
+        Toast.makeText(getContext(), ""+ user.getUserId() + " " + user.getUsername(), Toast.LENGTH_SHORT).show();
+
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         root = binding.getRoot();

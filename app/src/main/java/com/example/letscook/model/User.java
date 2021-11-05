@@ -1,6 +1,8 @@
 package com.example.letscook.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String userId;
     private String username;
     private String email;
@@ -11,6 +13,26 @@ public class User {
     private String userDescription;
 
     public User() {
+    }
+
+    public User(String userId, String username, String userAvatar, String dateOfBirth, String job, String userDescription) {
+        this.userId = userId;
+        this.username = username;
+        this.userAvatar = userAvatar;
+        this.dateOfBirth = dateOfBirth;
+        this.job = job;
+        this.userDescription = userDescription;
+    }
+
+    public User(String userId, String password) {
+        this.userId = userId;
+        this.password = password;
+    }
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
     public User(String userId, String username, String email, String password, String userAvatar, String dateOfBirth, String job, String userDescription) {

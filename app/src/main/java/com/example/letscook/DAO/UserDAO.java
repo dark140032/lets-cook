@@ -1,4 +1,134 @@
 package com.example.letscook.DAO;
 
+import static com.example.letscook.db.MyDB.USER_ID;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.example.letscook.db.MyDB;
+import com.example.letscook.model.Note;
+import com.example.letscook.model.User;
+
+import java.util.ArrayList;
+
 public class UserDAO {
+    private MyDB dbHelper;
+    private Context context;
+    private SQLiteDatabase database;
+
+    public UserDAO(Context c){
+        context = c;
+    }
+    public UserDAO open() throws SQLException {
+        dbHelper = new MyDB(context);
+        database = dbHelper.getWritableDatabase();
+        return this;
+    }
+    public void close(){
+        dbHelper.close();
+    }
+
+    //Get tất cả user
+    public ArrayList<User> getAllUser() {
+        Cursor cursorCourses = database.rawQuery("SELECT * FROM " + MyDB.TBL_USER, null);
+        ArrayList<User> courseModalArrayList = new ArrayList<>();
+        if (cursorCourses.moveToFirst()) {
+            do {
+                courseModalArrayList.add(new User(
+                        cursorCourses.getString(0),
+                        cursorCourses.getString(1),
+                        cursorCourses.getString(2),
+                        cursorCourses.getString(3),
+                        cursorCourses.getString(4),
+                        cursorCourses.getString(5),
+                        cursorCourses.getString(6),
+                        cursorCourses.getString(7)));
+            } while (cursorCourses.moveToNext());
+        }
+        cursorCourses.close();
+        return courseModalArrayList;
+    }
+
+
+    public User getUser(String email, String password) {
+        try {
+            Cursor cursor = database.rawQuery("SELECT * FROM " + MyDB.TBL_USER + " where " + MyDB.EMAIL + " = '" + email + "' and " + MyDB.PASSWORD + " = '" + password + "'", null);
+            User user = null;
+            if (cursor != null) {
+                cursor.moveToFirst();
+                user = new User(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(7));
+            }
+            return user;
+        }catch (Exception ex){
+
+        }
+        return null;
+    }
+
+    //Đăng ký tài khoản user
+    public boolean register(User user){
+        try {
+            ContentValues values = new ContentValues();
+            values.put(MyDB.USER_NAME, user.getUsername());
+            values.put(MyDB.EMAIL, user.getEmail());
+            values.put(MyDB.PASSWORD, user.getPassword());
+            database.insert(MyDB.TBL_USER, null, values);
+            return true;
+        }catch (Exception ex){
+
+        }
+        return false;
+    }
+
+    //Change password
+    public boolean updatePassword(String userId, String password) {
+        try{
+            ContentValues values = new ContentValues();
+            values.put(MyDB.PASSWORD , password);
+            database.update(MyDB.TBL_USER, values, USER_ID + " = ?", new String[] { String.valueOf(userId) });
+            database.close();
+            return true;
+        }catch (Exception ex){
+        }
+        return false;
+    }
+
+    //Update thông tin profile
+    public boolean updateProfile(User user) {
+        try{
+            ContentValues values = new ContentValues();
+            values.put(MyDB.USER_NAME , user.getUsername());
+            values.put(MyDB.USER_AVATAR , user.getUserAvatar());
+            values.put(MyDB.USER_DESCRIPTION , user.getUserDescription());
+            values.put(MyDB.JOB , user.getJob());
+            values.put(MyDB.DATE_OF_BIRTH , user.getDateOfBirth());
+            database.update(MyDB.TBL_USER, values, USER_ID + " = ?", new String[] { String.valueOf(user.getUserId()) });
+            database.close();
+            return true;
+        }catch (Exception ex){
+
+        }
+        return false;
+    }
+
+    //Check mail is exist
+    public boolean isExistMail(String email) {
+        ArrayList<User> list = getAllUser();
+        boolean isExist = false;
+        for (User user : list) {
+            if(email == user.getEmail())
+                isExist = true;
+        }
+        return isExist;
+    }
 }
