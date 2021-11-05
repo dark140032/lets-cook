@@ -3,59 +3,91 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     >
-
-    <ImageView
-        android:layout_marginBottom="5dp"
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="236dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/image_14" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:orientation="vertical"
+        android:background="@drawable/style2">
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_weight="9"
-            android:fontFamily="sans-serif-condensed"
-            android:text="Chủ đề"
-            android:textColor="@color/black"
-            android:textSize="20dp" />
-
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="18dp"
+            android:text="Trang Chủ"
+            android:gravity="center"
+            android:textColor="@color/white"/>
     </LinearLayout>
-
-    <HorizontalScrollView
-        android:layout_marginTop="6dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="60dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_theme"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="horizontal"
-                android:id="@+id/theme_recycleView"
-                >
+                android:orientation="vertical">
 
-            </androidx.recyclerview.widget.RecyclerView>
+                <ImageView
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="236dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chủ Đề"
+                    android:textSize="25dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="left"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="5dp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_theme"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    android:id="@+id/theme_recycleView"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleview_home_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    tools:listitem="@layout/iteam_recycleview_home"
+                    android:orientation="horizontal"
+
+                    />
+            </LinearLayout>
 
         </LinearLayout>
-    </HorizontalScrollView>
+
+    </ScrollView>
+
 
 
 </LinearLayout>
