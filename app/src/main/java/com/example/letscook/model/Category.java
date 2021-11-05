@@ -1,6 +1,8 @@
 package com.example.letscook.model;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
     private String categoryId;
     private String categoryName;
 

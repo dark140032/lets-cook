@@ -202,6 +202,59 @@ public class MyDB extends SQLiteOpenHelper {
             "VALUES ( " +
             "2 , 2)";
 
+
+    private String QUE_INSERT_CATEGORY= "insert into " + TBL_CATEGORY + " (" +
+            CATEGORY_NAME + " ) " +
+
+            "VALUES ( " +
+            "'Món ăn từ thịt gà'" +
+            ")";
+
+    private String QUE_INSERT_CATEGORY1= "insert into " + TBL_CATEGORY + " (" +
+            CATEGORY_NAME + " ) " +
+
+            "VALUES ( " +
+            "'Món ăn từ thịt heo'" +
+            ")";
+
+    private String QUE_INSERT_CATEGORY_RECIPE = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "1 , 1)";
+    private String QUE_INSERT_CATEGORY_RECIPE1 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "1 , 2)";
+    private String QUE_INSERT_CATEGORY_RECIPE2 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "1 , 3)";
+
+    private String QUE_INSERT_CATEGORY_RECIPE3 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 1)";
+    private String QUE_INSERT_CATEGORY_RECIPE4 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 2)";
+    private String QUE_INSERT_CATEGORY_RECIPE5 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 3)";
+
     public MyDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.e("okie", "MyDB:" );
@@ -228,6 +281,14 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_THEME_RECIPE);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME_RECIPE1);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME_RECIPE2);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY1);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE1);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE2);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE3);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE4);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE5);
     }
 
     @Override
