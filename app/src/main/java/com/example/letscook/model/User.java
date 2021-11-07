@@ -109,4 +109,18 @@ public class User implements Serializable {
     public void setUserDescription(String userDescription) {
         this.userDescription = userDescription;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", userAvatar='" + userAvatar + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", job='" + job + '\'' +
+                ", userDescription='" + userDescription + '\'' +
+                '}';
+    }
 }
