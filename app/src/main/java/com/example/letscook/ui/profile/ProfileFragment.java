@@ -2,6 +2,7 @@ package com.example.letscook.ui.profile;
 
 import static android.graphics.Color.BLACK;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -11,55 +12,89 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.letscook.DAO.UserDAO;
 import com.example.letscook.R;
+import com.example.letscook.activity.WelcomeActivity;
 import com.example.letscook.databinding.FragmentProfileBinding;
 import com.example.letscook.model.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 
 public class ProfileFragment extends Fragment {
 
     private ProfileViewModel profileViewModel;
     private FragmentProfileBinding binding;
-    private EditText edt_fullname;
+    private EditText edt_username;
     private EditText edt_email;
     private TextView txt_birthDay;
-    private EditText edt_birthDay;
+    private TextView txt_dateOfBirth;
     private TextView txt_job;
     private EditText edt_job;
     private TextView txt_description;
     private EditText edt_description;
     private LinearLayout ll_ButonMain;
     private LinearLayout ll_ButonEdit;
+    private  int mYear = 0, mMonth = 0, mDay = 0;
     public View root;
+    public User user;
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Get user đã đăng nhập tại code này
         Intent intent = this.getActivity().getIntent();
         Bundle bundle = intent.getExtras();
-        User user = (User) bundle.getSerializable("object_user");
+        user = (User) bundle.getSerializable("object_user");
         //
-
-        Toast.makeText(getContext(), ""+ user.getUserId() + " " + user.getUsername(), Toast.LENGTH_SHORT).show();
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         root = binding.getRoot();
         getProfileAccount();
+
+
+
+        root.findViewById(R.id.txt_dateOfBirth).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+
+                                txt_dateOfBirth.setText(dayOfMonth + " / " + (monthOfYear + 1) + " / " + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        }
+    );
+
         root.findViewById(R.id.imgBtn_editProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +104,29 @@ public class ProfileFragment extends Fragment {
                 ll_ButonEdit.setVisibility(View.VISIBLE);
             }
         });
+
+        root.findViewById(R.id.btn_update_profile).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UserDAO userDAO = new UserDAO(getActivity());
+                userDAO.open();
+                User userUpdate = new User( user.getUserId(), edt_username.getText().toString(), "link_avatar"
+                                           ,txt_dateOfBirth.getText().toString(), edt_job.getText().toString(),
+                                            edt_description.getText().toString());
+
+                if(userDAO.updateProfile(userUpdate)){
+                    Toast.makeText(getContext(), "Cập nhật profile thành công !", Toast.LENGTH_SHORT).show();
+                    setEnableFalseEdit();
+                    root.findViewById(R.id.imgBtn_editProfile).setVisibility(View.VISIBLE);
+                    ll_ButonMain.setVisibility(View.VISIBLE);
+                    ll_ButonEdit.setVisibility(View.GONE);
+                }else {
+                    Toast.makeText(getContext(), "Cập nhật không thành công !", Toast.LENGTH_SHORT).show();
+                }
+                userDAO.close();
+            }
+        });
+
         root.findViewById(R.id.btn_cancel_edit_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,15 +137,30 @@ public class ProfileFragment extends Fragment {
                 ll_ButonEdit.setVisibility(View.GONE);
             }
         });
+
         root.findViewById(R.id.btn_changePassword).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(),ProfileChangePasswordFragment.class);
-                view.getContext();
+                FragmentTransaction ft_add = getFragmentManager().beginTransaction();
+                ft_add.add(R.id.nav_host_fragment_activity_main, new ProfileChangePasswordFragment());
+                ft_add.commit();
+            }
+        });
+
+        root.findViewById(R.id.btn_logOut).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), WelcomeActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
         return root;
     }
+
+    ////////
+
+
 
     @Override
     public void onDestroyView() {
@@ -101,15 +174,13 @@ public class ProfileFragment extends Fragment {
         txt_job.setTextColor(BLACK);
         txt_description.setTextColor(BLACK);
 
-        edt_fullname.setEnabled(true);
-        edt_email.setEnabled(true);
-        edt_birthDay.setEnabled(true);
+        edt_username.setEnabled(true);
+        txt_dateOfBirth.setEnabled(true);
         edt_job.setEnabled(true);
         edt_description.setEnabled(true);
 
-        edt_fullname.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
-        edt_email.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
-        edt_birthDay.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
+        edt_username.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
+        txt_dateOfBirth.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
         edt_job.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
         edt_description.setBackground(getResources().getDrawable(R.drawable.style_profile_edit));
 
@@ -121,27 +192,18 @@ public class ProfileFragment extends Fragment {
         txt_job.setTextColor(Color.parseColor("#c4c4c4"));
         txt_description.setTextColor(Color.parseColor("#c4c4c4"));
 
-        edt_fullname.setEnabled(false);
-        edt_email.setEnabled(false);
-        edt_birthDay.setEnabled(false);
+        edt_username.setEnabled(false);
+        txt_dateOfBirth.setEnabled(false);
         edt_job.setEnabled(false);
         edt_description.setEnabled(false);
 
-        edt_fullname.setBackground(null);
-        edt_email.setBackground(null);
-        edt_birthDay.setBackground(getResources().getDrawable(R.drawable.style_profile));
+        edt_username.setBackground(null);
+        txt_dateOfBirth.setBackground(getResources().getDrawable(R.drawable.style_profile));
         edt_job.setBackground(getResources().getDrawable(R.drawable.style_profile));
         edt_description.setBackground(getResources().getDrawable(R.drawable.style_profile));
     }
 
     private void getProfileAccount() {
-        Account account = new Account();
-        account.setFullname("Nguyễn Nhân");
-        account.setEmail("nguyennhan@gmail.com");
-        account.setBirthDay("14/01/2021");
-        account.setJob("Lập trình viên");
-        account.setDescription("Miêu tả bản thân");
-
         ll_ButonMain = root.findViewById(R.id.layoutBtnMain);
         ll_ButonEdit = root.findViewById(R.id.layoutBtnEdit);
 
@@ -149,15 +211,15 @@ public class ProfileFragment extends Fragment {
         txt_job = root.findViewById(R.id.txt_job);
         txt_description = root.findViewById(R.id.txt_description);
 
-        edt_fullname = root.findViewById(R.id.edt_fullname);
-        edt_fullname.setText(account.getFullname());
+        edt_username = root.findViewById(R.id.edt_username);
+        edt_username.setText(user.getUsername());
         edt_email = root.findViewById(R.id.edt_email);
-        edt_email.setText(account.getEmail());
-        edt_birthDay = root.findViewById(R.id.edt_birthDay);
-        edt_birthDay.setText(account.getBirthDay());
+        edt_email.setText(user.getEmail());
+        txt_dateOfBirth = root.findViewById(R.id.txt_dateOfBirth);
+        txt_dateOfBirth.setText(user.getDateOfBirth());
         edt_job = root.findViewById(R.id.edt_job);
-        edt_job.setText(account.getJob());
+        edt_job.setText(user.getJob());
         edt_description = root.findViewById(R.id.edt_description);
-        edt_description.setText(account.getDescription());
+        edt_description.setText(user.getUserDescription());
     }
 }

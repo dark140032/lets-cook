@@ -105,30 +105,30 @@ public class UserDAO {
 
     //Update thông tin profile
     public boolean updateProfile(User user) {
-        try{
             ContentValues values = new ContentValues();
             values.put(MyDB.USER_NAME , user.getUsername());
             values.put(MyDB.USER_AVATAR , user.getUserAvatar());
             values.put(MyDB.USER_DESCRIPTION , user.getUserDescription());
             values.put(MyDB.JOB , user.getJob());
             values.put(MyDB.DATE_OF_BIRTH , user.getDateOfBirth());
-            database.update(MyDB.TBL_USER, values, USER_ID + " = ?", new String[] { String.valueOf(user.getUserId()) });
+            database.update(MyDB.TBL_USER, values, MyDB.USER_ID + " = ? ", new String[] { String.valueOf(user.getUserId()) });
             database.close();
             return true;
-        }catch (Exception ex){
-
-        }
-        return false;
     }
 
     //Check mail is exist
     public boolean isExistMail(String email) {
-        ArrayList<User> list = getAllUser();
-        boolean isExist = false;
-        for (User user : list) {
-            if(email == user.getEmail())
-                isExist = true;
+        try {
+            Cursor cursor = database.rawQuery("SELECT * FROM " + MyDB.TBL_USER + " where " + MyDB.EMAIL + " = '" + email + "' ", null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+                if (cursor.getString(0).toString() != null) {
+                    return true;
+                }
+            }
+        }catch (Exception ex){
+
         }
-        return isExist;
+        return false;
     }
 }

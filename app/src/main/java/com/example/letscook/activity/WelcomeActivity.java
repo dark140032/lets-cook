@@ -13,6 +13,12 @@ import com.example.letscook.activity.LoginActivity;
 import com.example.letscook.activity.RegisterActivity;
 import com.example.letscook.model.User;
 
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+
+import javax.crypto.Cipher;
+import javax.crypto.EncryptedPrivateKeyInfo;
+
 
 public class WelcomeActivity extends AppCompatActivity {
     Button btnLogin;
@@ -21,6 +27,8 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.welcome);
         btnLogin = findViewById(R.id.btn_login);
         btnRegister = findViewById(R.id.btn_register);
