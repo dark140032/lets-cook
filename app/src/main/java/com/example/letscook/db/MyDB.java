@@ -145,6 +145,16 @@ public class MyDB extends SQLiteOpenHelper {
             "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
             ")";
 
+    private String QUE_INSERT_RECIPE2= "insert into " + TBL_RECIPE + " (" +
+            RECIPE_NAME + " , " +
+            RECIPE_DES + " , " +
+            RECIPE_MATERIAL + " , " +
+            RECIPE_MAKING + " , " +
+            RECIPE_AVATAR + " ) " +
+            "VALUES ( " +
+            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
+            ")";
+
     private String QUE_INSERT_WISHLIST= "insert into " + TBL_WISHLIST + " (" +
             USER_ID + " , " +
             RECIPE_ID + " ) " +
@@ -273,6 +283,7 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_USER);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE1);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE2);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST1);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME);

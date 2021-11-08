@@ -8,25 +8,25 @@
     android:orientation="vertical"
     android:layout_marginBottom="5dp">
 
-            <TextView
-                android:id="@+id/txt_cate_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Món Từ Thịt Gà"
-                android:textSize="25dp"
-                android:layout_marginStart="10dp"
-                android:gravity="left"
-                android:textColor="@color/black"
-                android:layout_marginBottom="5dp"
-                />
+    <TextView
+        android:id="@+id/txt_cate_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Món Từ Thịt Gà"
+        android:textSize="25dp"
+        android:layout_marginStart="10dp"
+        android:gravity="left"
+        android:textColor="@color/black"
+        android:layout_marginBottom="5dp"
+        />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_item_category"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/item_theme"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_item_category"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_theme"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        />
 
 </LinearLayout>

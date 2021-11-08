@@ -2,6 +2,7 @@ package com.example.letscook.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.letscook.DAO.UserDAO;
 import com.example.letscook.R;
 import com.example.letscook.model.User;
+import com.example.letscook.ui.notes.NoteDetailActivity;
 import com.example.letscook.ui.recipe.RecipeDetailActivity;
 
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                             bundle.putSerializable("object_user", user);
                             i.putExtras(bundle);
                             LoginActivity.this.startActivity(i);
+
                         } else
                             Toast.makeText(getApplicationContext(), "Sai email hoặc mật khẩu, hãy nhập lại !", Toast.LENGTH_LONG).show();
 

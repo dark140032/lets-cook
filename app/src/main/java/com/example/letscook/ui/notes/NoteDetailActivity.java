@@ -17,6 +17,8 @@ import com.example.letscook.DAO.NoteDAO;
 import com.example.letscook.R;
 import com.example.letscook.db.MyDB;
 import com.example.letscook.model.Note;
+import com.example.letscook.model.User;
+import com.example.letscook.ui.profile.Account;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,12 +49,21 @@ public class NoteDetailActivity extends AppCompatActivity {
             }
         });
 
+        //Get user đã đăng nhập tại code này
+        Intent intent1 = this.getIntent();
+
+        String _idUser= intent1.getStringExtra("_idUser");
+
+        Log.e("TAG", "ID USER: " + _idUser );
+
         Bundle bundle = getIntent().getExtras();
         if (bundle == null){
             return;
         }
 
         Note note = (Note) bundle.get("object_note");
+
+
         if (note != null){
             String titleNote = note.getNoteName();
             String contentNote = note.getNoteContent();
@@ -66,9 +77,9 @@ public class NoteDetailActivity extends AppCompatActivity {
             btn_deleteDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    noteDAO.delete(_id,"1");
-                    Toast.makeText(NoteDetailActivity.this, "Delete success!",Toast.LENGTH_LONG);
+                    noteDAO.delete(_id,note.getUserId());
                     onBackPressed();
+                    Toast.makeText(NoteDetailActivity.this, "Xóa thành công!",Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -80,7 +91,7 @@ public class NoteDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String title = txtTitleNote.getText().toString();
                     String content = txtContentNote.getText().toString();
-                    noteDAO.update(_id,title,content,"1");
+                    noteDAO.update(_id,title,content,note.getUserId());
                     onBackPressed();
                 }
             });
@@ -99,7 +110,8 @@ public class NoteDetailActivity extends AppCompatActivity {
                     Date d = new Date();
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                     String date= formatter.format(d);
-                    noteDAO.insert(new Note("",title, content,date,"1"));
+                    Log.e("TAG", "ID alo: " + _idUser );
+                    noteDAO.insert(new Note("",title, content,date,_idUser));
                     onBackPressed();
                 }
             });

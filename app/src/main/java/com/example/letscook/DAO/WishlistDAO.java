@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import com.example.letscook.db.MyDB;
 import com.example.letscook.model.Note;
 import com.example.letscook.model.Recipe;
+import com.example.letscook.model.Wishlist;
 
 import java.util.ArrayList;
 
@@ -70,8 +71,13 @@ public class WishlistDAO {
                 null);
     }
 
-    public void insert(String _id_recipe, String _id_user){
-        database.insert(TBL_WISHLIST,"( " + USER_ID + " , "+ RECIPE_ID + " )\n values ( " + _id_user + " , " + _id_recipe + " ) "  , null );
+//    public void insert(String _id_recipe, String _id_user){
+//        database.insert(TBL_WISHLIST,"( " + USER_ID + " , "+ RECIPE_ID + " )\n values ( " + _id_user + " , " + _id_recipe + " ) "  , null );
+//    }
+    public void insertWishlist(Wishlist wishlist){
+        ContentValues contentValues =new ContentValues();
+        contentValues.put(USER_ID,wishlist.getUserId());
+        contentValues.put(RECIPE_ID,wishlist.getRecipeID());
+        database.insert(TBL_WISHLIST, null,contentValues);
     }
-
 }
