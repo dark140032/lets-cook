@@ -1,6 +1,8 @@
 package com.example.letscook.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,9 @@ import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentHomeBinding;
 import com.example.letscook.model.Category;
 import com.example.letscook.model.Theme;
+import com.example.letscook.model.User;
+import com.example.letscook.ui.notes.NoteDetailActivity;
+import com.example.letscook.ui.recipe.RecipeDetailActivity;
 
 import java.util.ArrayList;
 
@@ -34,6 +39,14 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
+
+        //Get user đã đăng nhập tại code này
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        User user = (User) bundle.getSerializable("object_user");
+
+        Log.e("TAG", "id user: " + user.getUserId() );
+
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         recyclerView = root.findViewById(R.id.theme_recycleView);
@@ -48,7 +61,7 @@ public class HomeFragment extends Fragment {
         homeDAO = new HomeDAO(getContext());
         homeDAO.open();
         ArrayList<Category> categories = homeDAO.getAllCategory();
-        categoryAdapter = new CategoryAdapter(getContext(),categories);
+        categoryAdapter = new CategoryAdapter(getContext(),categories, user.getUserId());
         recyclerViewCategory.setAdapter(categoryAdapter);
         recyclerViewCategory.setLayoutManager(new LinearLayoutManager(getContext()));
 

@@ -32,10 +32,12 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     ArrayList<Recipe> listRecipe;
     WishlistDAO wishlistDAO;
     public static String idRecipe;
+    String _idUserL;
 
-    public WishlistAdapter(Context context, ArrayList<Recipe> listRecipe) {
+    public WishlistAdapter(Context context, ArrayList<Recipe> listRecipe, String _idUserL) {
         this.context = context;
         this.listRecipe = listRecipe;
+        this._idUserL = _idUserL;
     }
 
     @NonNull
@@ -59,6 +61,19 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         holder.txtName.setText(recipe.getRecipeName());
         wishlistDAO =new WishlistDAO(context);
         wishlistDAO.open();
+
+        holder.recycleview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, RecipeDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_recipe", recipe);
+                bundle.putString("_idUserL", _idUserL);
+                i.putExtras(bundle);
+                context.startActivity(i);
+            }
+        });
+
         holder.btnDeleteWishlistItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,22 +83,10 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
                 Log.e("TAG", "id recipe:  " + temp_recipeId );
                 idRecipe = temp_recipeId;
                 String temp_userId = "1";
-                wishlistDAO.delete(recipe.getRecipeId(),"1");
+                wishlistDAO.delete(recipe.getRecipeId(),_idUserL);
                 Toast.makeText(context, "xóa Yêu Thích Thành Công!", Toast.LENGTH_SHORT).show();
             }
         });
-
-        holder.recycleview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, RecipeDetailActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("object_recipe", recipe);
-                i.putExtras(bundle);
-                context.startActivity(i);
-            }
-        });
-
 
     }
 

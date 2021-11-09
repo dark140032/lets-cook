@@ -22,10 +22,12 @@ public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapte
     Context context;
     ArrayList<Recipe> recipeArrayList;
     CategoryAdapter categoryAdapter;
+    String _idUserL;
 
-    public ItemCategoryAdapter(Context context, ArrayList<Recipe> recipeArrayList) {
+    public ItemCategoryAdapter(Context context, ArrayList<Recipe> recipeArrayList, String _idUserL) {
         this.context = context;
         this.recipeArrayList = recipeArrayList;
+        this._idUserL = _idUserL;
     }
 
     @NonNull
@@ -44,12 +46,14 @@ public class ItemCategoryAdapter extends RecyclerView.Adapter<ItemCategoryAdapte
         Recipe recipe = recipeArrayList.get(position);
 
         holder.txtThemeDetailNm.setText(recipe.getRecipeName());
+
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, RecipeDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("object_recipe", recipe);
+                bundle.putString("_idUserL", _idUserL);
                 i.putExtras(bundle);
                 context.startActivity(i);
             }
