@@ -49,13 +49,13 @@
                     android:layout_weight="9"
                     >
 
-<!--                    <ImageButton-->
-<!--                        android:id="@+id/btn_delete_note"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:backgroundTint="#00FFFFFF"-->
-<!--                        android:src="@drawable/ic_bin_notes"-->
-<!--                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"></ImageButton>-->
+                    <ImageButton
+                        android:id="@+id/btn_delete_note_f"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#00FFFFFF"
+                        android:src="@drawable/ic_bin_notes"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"></ImageButton>
 
                 </LinearLayout>
             </LinearLayout>

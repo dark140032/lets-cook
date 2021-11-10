@@ -133,7 +133,7 @@ public class MyDB extends SQLiteOpenHelper {
             "Tương cà \n" +
             "Đế bánh Pizza\n" +
             "Hành tím \n" +
-            "Bơ ', 'hambeger', 'hambeger' " +
+            "Bơ ', 'hambeger', 'hambeger.png' " +
             ")";
     private String QUE_INSERT_RECIPE1= "insert into " + TBL_RECIPE + " (" +
             RECIPE_NAME + " , " +
@@ -142,7 +142,7 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
+            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger.png' " +
             ")";
 
     private String QUE_INSERT_RECIPE2= "insert into " + TBL_RECIPE + " (" +
@@ -152,7 +152,7 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
+            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger.png' " +
             ")";
 
     private String QUE_INSERT_WISHLIST= "insert into " + TBL_WISHLIST + " (" +
