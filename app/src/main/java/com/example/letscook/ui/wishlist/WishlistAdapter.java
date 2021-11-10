@@ -2,6 +2,7 @@ package com.example.letscook.ui.wishlist;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -29,6 +30,7 @@ import com.example.letscook.model.Recipe;
 import com.example.letscook.ui.notes.NoteDetailActivity;
 import com.example.letscook.ui.recipe.RecipeDetailActivity;
 
+import java.io.File;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -62,6 +64,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = listRecipe.get(position);
+
         holder.recipeAvatar.setImageResource(R.drawable.hambeger);
 
         Locale locale = new Locale("vn", "VN");
