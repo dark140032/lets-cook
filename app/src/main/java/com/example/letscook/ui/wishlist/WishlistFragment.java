@@ -88,7 +88,7 @@ public class WishlistFragment extends Fragment {
                     // if no item is added in filtered list we are
                     // displaying a toast message as no data found.
                     congThucAdapter.filterList(filteredlist);
-                    Toast.makeText(getContext(), "Not Found!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Không có kết quả!", Toast.LENGTH_SHORT).show();
 
                 } else {
                     // at last we are passing that filtered
@@ -136,4 +136,25 @@ public class WishlistFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Get user đã đăng nhập tại code này
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        User user = (User) bundle.getSerializable("object_user");
+
+        Log.e("TAG", "id user: " + user.getUserId() );
+        wishlistDAO =new WishlistDAO(getContext());
+        wishlistDAO.open();
+        ArrayList<Recipe> listRecipe = wishlistDAO.getAllWishlist(user.getUserId());
+
+        listRecipe.size();
+
+        congThucAdapter=new WishlistAdapter(getContext(),listRecipe, user.getUserId());
+        recyclerView.setAdapter(congThucAdapter);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(null, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+    }
 }

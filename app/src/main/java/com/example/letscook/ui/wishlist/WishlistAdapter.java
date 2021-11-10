@@ -1,7 +1,12 @@
 package com.example.letscook.ui.wishlist;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letscook.DAO.NoteDAO;
@@ -33,6 +39,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     WishlistDAO wishlistDAO;
     public static String idRecipe;
     String _idUserL;
+    AlertDialog.Builder builder;
+
 
     public WishlistAdapter(Context context, ArrayList<Recipe> listRecipe, String _idUserL) {
         this.context = context;
@@ -54,8 +62,8 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = listRecipe.get(position);
-//        holder.recipeAvatar.setImageResource("@drawable/" + recipe.getRecipeAvatar());
         holder.recipeAvatar.setImageResource(R.drawable.hambeger);
+
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         holder.txtName.setText(recipe.getRecipeName());
@@ -77,14 +85,41 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         holder.btnDeleteWishlistItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listRecipe.remove(holder.getAdapterPosition());
-                notifyItemRemoved(holder.getAdapterPosition());
-                String temp_recipeId = recipe.getRecipeId();
-                Log.e("TAG", "id recipe:  " + temp_recipeId );
-                idRecipe = temp_recipeId;
-                String temp_userId = "1";
-                wishlistDAO.delete(recipe.getRecipeId(),_idUserL);
-                Toast.makeText(context, "xóa Yêu Thích Thành Công!", Toast.LENGTH_SHORT).show();
+                builder = new AlertDialog.Builder(context);
+                //Uncomment the below code to Set the message and title from the strings.xml file
+                builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+
+                //Setting message manually and performing action on button click
+                builder.setMessage("Bạn có chắc rằng muốn xóa nó ?")
+                        .setCancelable(false)
+                        .setPositiveButton("Đồng ý!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                //xóa khỏi danh sách
+                                listRecipe.remove(holder.getAdapterPosition());
+                                notifyItemRemoved(holder.getAdapterPosition());
+                                String temp_recipeId = recipe.getRecipeId();
+                                Log.e("TAG", "id recipe:  " + temp_recipeId );
+                                idRecipe = temp_recipeId;
+                                String temp_userId = "1";
+                                wishlistDAO.delete(recipe.getRecipeId(),_idUserL);
+                                Toast.makeText(context, "xóa Yêu Thích Thành Công!", Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(context,"Đã xóa khỏi danh sách!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Không!", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Action for 'NO' Button
+                                dialog.cancel();
+                            }
+                        });
+                //Creating dialog box
+                AlertDialog alert = builder.create();
+                //Setting the title manually
+                alert.setTitle("Thông báo");
+                alert.show();
             }
         });
 
