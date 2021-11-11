@@ -50,6 +50,22 @@ public class RecipeDetailActivity extends AppCompatActivity {
         String _id = (String) bundle.get("_idUserL") ;
         Log.e("TAG", "_idL: " + _id );
 
+        String txt_name = recipe.getRecipeName();
+        TextView txtName = findViewById(R.id.txt_recipe_name);
+        txtName.setText(txt_name);
+
+        String txt_des = recipe.getRecipeDes();
+        TextView txtDes = findViewById(R.id.txt_recipe_des);
+        txtDes.setText(txt_des);
+
+        String txt_material = recipe.getRecipeMaterial();
+        TextView txtMaterial = findViewById(R.id.txt_recipe_material);
+        txtMaterial.setText(txt_material);
+
+        String txt_making = recipe.getRecipeMaking();
+        TextView txtMaking = findViewById(R.id.txt_recipe_making);
+        txtMaking.setText(txt_making);
+
         wishlistDAO =new WishlistDAO(getApplication());
         wishlistDAO.open();
         ArrayList<Recipe> listWishlist = wishlistDAO.getAllWishlist(_id);
@@ -135,24 +151,6 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 }
             }
         }
-
-        String txt_name = recipe.getRecipeName();
-        TextView txtName = findViewById(R.id.txt_recipe_name);
-        txtName.setText(txt_name);
-
-        String txt_des = recipe.getRecipeDes();
-        TextView txtDes = findViewById(R.id.txt_recipe_des);
-        txtDes.setText(txt_des);
-
-        String txt_material = recipe.getRecipeMaterial();
-        TextView txtMaterial = findViewById(R.id.txt_recipe_material);
-        txtMaterial.setText(txt_material);
-
-        String txt_making = recipe.getRecipeMaking();
-        TextView txtMaking = findViewById(R.id.txt_recipe_making);
-        txtMaking.setText(txt_making);
-
-
 
     }
 

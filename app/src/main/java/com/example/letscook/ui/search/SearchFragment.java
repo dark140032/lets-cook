@@ -1,5 +1,6 @@
 package com.example.letscook.ui.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.example.letscook.DAO.WishlistDAO;
 import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentSearchBinding;
 import com.example.letscook.model.Recipe;
+import com.example.letscook.model.User;
 import com.example.letscook.ui.wishlist.WishlistAdapter;
 
 import java.util.ArrayList;
@@ -42,6 +44,11 @@ public class SearchFragment extends Fragment {
         binding = FragmentSearchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        //Get user đã đăng nhập tại code này
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        User user = (User) bundle.getSerializable("object_user");
+
         searchDAO =new SearchDAO(getContext());
         searchDAO.open();
         ArrayList<Recipe> listRecipeSearch = searchDAO.getAllRecipe();
@@ -49,7 +56,7 @@ public class SearchFragment extends Fragment {
 
         listRecipeSearch.size();
 
-        searchAdapter=new SearchAdapter(getContext(),listRecipeSearch);
+        searchAdapter=new SearchAdapter(getContext(),listRecipeSearch,user.getUserId());
         recyclerView.setAdapter(searchAdapter);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(null, 2);
