@@ -175,6 +175,11 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY_RECIPE);
         sqLiteDatabase.execSQL(QUE_INSERT_USER);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE1);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST1);
