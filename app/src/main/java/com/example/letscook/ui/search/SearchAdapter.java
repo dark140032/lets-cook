@@ -29,10 +29,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     Context context;
     ArrayList<Recipe> listRecipesearch;
     SearchDAO searchDAO;
+    String _idUserL;
 
-    public SearchAdapter(Context context, ArrayList<Recipe> listRecipesearch) {
+    public SearchAdapter(Context context, ArrayList<Recipe> listRecipesearch, String _idUserL) {
         this.context = context;
         this.listRecipesearch = listRecipesearch;
+        this._idUserL = _idUserL;
     }
 
     @NonNull
@@ -61,6 +63,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
                 Intent i = new Intent(context, RecipeDetailActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("object_recipe", recipe);
+                bundle.putString("_idUserL", _idUserL);
                 i.putExtras(bundle);
                 context.startActivity(i);
             }

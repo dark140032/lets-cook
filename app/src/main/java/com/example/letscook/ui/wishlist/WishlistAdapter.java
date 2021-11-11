@@ -104,7 +104,6 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
                                 String temp_recipeId = recipe.getRecipeId();
                                 Log.e("TAG", "id recipe:  " + temp_recipeId );
                                 idRecipe = temp_recipeId;
-                                String temp_userId = "1";
                                 wishlistDAO.delete(recipe.getRecipeId(),_idUserL);
                                 Toast.makeText(context, "xóa Yêu Thích Thành Công!", Toast.LENGTH_SHORT).show();
 
