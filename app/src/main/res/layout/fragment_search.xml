@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.search.SearchFragment">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/style2"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="18dp"
+            android:text="Tìm Kiếm"
+            android:gravity="center"
+            android:textColor="@color/white"/>
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         >
         <LinearLayout
             android:orientation="vertical"
@@ -16,14 +31,16 @@
             android:layout_height="match_parent"
             >
             <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_recipe_search"
+                android:background="@drawable/style"
                 style="@android:style/Widget.Material.Light.SearchView"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_margin="35dp"
-                android:background="@drawable/style"
-                tools:layout_editor_absoluteX="35dp"
-                tools:layout_editor_absoluteY="45dp">
-            </androidx.appcompat.widget.SearchView>
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="45dp"
+                app:queryHint="Search Here"
+                app:iconifiedByDefault="false"
+                android:layout_marginEnd="45dp"/>
 
             <TextView
                 android:id="@+id/textView"
@@ -35,62 +52,16 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:layout_marginBottom="20dp"
                 />
 
-            <GridLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleview_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:rowCount="2"
-                android:columnCount="2"
-                android:orientation="vertical"
-                android:layout_marginTop="50dp"
-
-                >
-                <androidx.cardview.widget.CardView
-                    android:layout_width="190dp"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="10dp"
-                    app:cardCornerRadius="8dp" >
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/anh1"
-                        android:scaleType="centerCrop"
-                        android:background="#00FFFFFF"
-                        android:src="@drawable/hambeger"
-                        android:contentDescription="TODO"></ImageView>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="41dp"
-                        android:background="#9E000000"
-                        android:layout_gravity="bottom"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="start|center"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="@color/white"
-                            android:textSize="18dp"
-                            android:text="Hambuger" />
-
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
-
-
-
-
-            </GridLayout>
+                tools:listitem="@layout/item_search"
+                />
 
         </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
