@@ -34,7 +34,17 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="18dp"
-                android:text="Hambuger" />
+                android:text="Hambuger"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_delete_wishlist_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_bin"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"></ImageButton>
         </LinearLayout>
 
 </androidx.cardview.widget.CardView>

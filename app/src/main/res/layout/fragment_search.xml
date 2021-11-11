@@ -19,7 +19,8 @@
             android:textSize="18dp"
             android:text="Tìm Kiếm"
             android:gravity="center"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            />
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
