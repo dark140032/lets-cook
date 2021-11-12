@@ -423,17 +423,17 @@ public class MyDB extends SQLiteOpenHelper {
                "Bằng cách ngâm miếng thịt bò trong rượu trắng hoặc nước vo gạo khoảng 10 - 15 phút, sau đó rửa lại sạch với nước lạnh.', 'bungioheo' " +
             ")";
 
-    /*private String QUE_INSERT_RECIPE= "insert into " + TBL_RECIPE + " (" +
+    private String QUE_INSERT_RECIPE11= "insert into " + TBL_RECIPE + " (" +
             RECIPE_NAME + " , " +
             RECIPE_DES + " , " +
             RECIPE_MATERIAL + " , " +
             RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'Pizza hải sản', 'Pizza hải sản là món dễ ăn, thơm ngon và được nhiều người yêu thích', " +
-            "'Tôm sú                300 gr\n" +
-            "Bơ ', 'hambeger', 'pizzahaisan' " +
-            ")";*/
+            "'Gà 50KG', 'Món dễ ăn, thơm ngon và được nhiều người yêu thích', " +
+            "'Gà                50kg\n" +
+            "Bơ ', 'Gà 50KG', 'ga50kg' " +
+            ")";
 
 
 
@@ -457,98 +457,98 @@ public class MyDB extends SQLiteOpenHelper {
             THEME_IMAGE + " ) " +
 
             "VALUES ( " +
-            "'AN TOI', 'pizzahaisan' )";
+            "'Ăn Tối', 'buatoi' )";
 
     private String QUE_INSERT_THEME1= "insert into " + TBL_THEME + " (" +
             THEME_NAME + " , " +
             THEME_IMAGE + " ) " +
 
             "VALUES ( " +
-            "'AN SANG' , 'pizzahaisan')";
+            "'Ăn Sáng' , 'buasang')";
 
     private String QUE_INSERT_THEME2= "insert into " + TBL_THEME + " (" +
             THEME_NAME + " , " +
             THEME_IMAGE + " ) " +
 
             "VALUES ( " +
-            "'AN TRUA' , 'pizzahaisan')";
+            "'Ăn Trưa' , 'buatrua')";
 
     private String QUE_INSERT_THEME_RECIPE= "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 1)";
+            "3 , 1)";
 
     private String QUE_INSERT_THEME_RECIPE1 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "3 , 2)";
+            "1 , 2)";
 
     private String QUE_INSERT_THEME_RECIPE2 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "3 , 3)";
+            "1 , 3)";
 
     private String QUE_INSERT_THEME_RECIPE3 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "1 , 4)";
+            "2 , 4)";
 
     private String QUE_INSERT_THEME_RECIPE4 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "1 , 5)";
+            "2 , 5)";
 
     private String QUE_INSERT_THEME_RECIPE5 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "3 , 6)";
+            "1 , 6)";
 
     private String QUE_INSERT_THEME_RECIPE6 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "3 , 7)";
+            "1 , 7)";
 
     private String QUE_INSERT_THEME_RECIPE7 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 8)";
+            "3 , 8)";
 
     private String QUE_INSERT_THEME_RECIPE8 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 9)";
+            "3 , 9)";
 
     private String QUE_INSERT_THEME_RECIPE9 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 10)";
+            "3 , 10)";
 
     private String QUE_INSERT_THEME_RECIPE10 = "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "1 , 11)";
+            "2 , 11)";
 
 
 
@@ -578,38 +578,73 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "1 , 1)";
+            "2 , 1)";
     private String QUE_INSERT_CATEGORY_RECIPE1 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
             CATEGORY_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "1 , 2)";
+            "3 , 2)";
     private String QUE_INSERT_CATEGORY_RECIPE2 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
             CATEGORY_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "1 , 3)";
+            "3 , 3)";
 
     private String QUE_INSERT_CATEGORY_RECIPE3 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
             CATEGORY_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 1)";
+            "1 , 4)";
     private String QUE_INSERT_CATEGORY_RECIPE4 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
             CATEGORY_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 2)";
+            "1 , 5)";
     private String QUE_INSERT_CATEGORY_RECIPE5 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
             CATEGORY_ID + " , " +
             RECIPE_ID + " ) " +
 
             "VALUES ( " +
-            "2 , 3)";
+            "3 , 6)";
+
+    private String QUE_INSERT_CATEGORY_RECIPE6 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "3 , 7)";
+
+    private String QUE_INSERT_CATEGORY_RECIPE7 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 8)";
+
+    private String QUE_INSERT_CATEGORY_RECIPE8 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 9)";
+
+    private String QUE_INSERT_CATEGORY_RECIPE9 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "2 , 10)";
+
+    private String QUE_INSERT_CATEGORY_RECIPE10 = "insert into " + TBL_CATEGORY_RECIPE + " (" +
+            CATEGORY_ID + " , " +
+            RECIPE_ID + " ) " +
+
+            "VALUES ( " +
+            "1 , 11)";
 
     public MyDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -625,6 +660,7 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TBL_CREATE_THEME_RECIPE);
         sqLiteDatabase.execSQL(TBL_CREATE_THEME);
         sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY);
+        sqLiteDatabase.execSQL(TBL_CREATE_CATEGORY_RECIPE);
         sqLiteDatabase.execSQL(QUE_INSERT_USER);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE1);
@@ -637,6 +673,7 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE8);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE9);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE10);
+        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE11);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST1);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME);
@@ -662,6 +699,11 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE3);
         sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE4);
         sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE5);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE6);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE7);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE8);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE9);
+        sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE10);
     }
 
     @Override
