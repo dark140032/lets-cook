@@ -253,7 +253,7 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'Hamburger Tinh Than Tre', 'Bánh hamburger tinh than tre cuốn hút với sắc đen lạ mắt, vỏ bánh thơm nhẹ mùi bơ, ăn kèm cùng nhân thịt bò đậm vị, rau củ tươi mát, phô mai béo ngậy, cực kỳ bổ dưỡng.', " +
+            "'Hamburger Than Tre', 'Bánh hamburger tinh than tre cuốn hút với sắc đen lạ mắt, vỏ bánh thơm nhẹ mùi bơ, ăn kèm cùng nhân thịt bò đậm vị, rau củ tươi mát, phô mai béo ngậy, cực kỳ bổ dưỡng.', " +
             "'Bột mì số 13 200 gr\n" +
             " Bột tinh than tre 10 gr\n" +
             " Bơ lạt 20 gr\n" +
@@ -422,19 +422,6 @@ public class MyDB extends SQLiteOpenHelper {
                "Bạn có thể mang 1 củ gừng đi nướng sơ qua rồi giã nhuyễn, chà xát tất cả gừng trên phần thịt bò một cách nhẹ nhàng, rửa lại với nước sạch là được.\n" +
                "Bằng cách ngâm miếng thịt bò trong rượu trắng hoặc nước vo gạo khoảng 10 - 15 phút, sau đó rửa lại sạch với nước lạnh.', 'bungioheo' " +
             ")";
-
-    private String QUE_INSERT_RECIPE11= "insert into " + TBL_RECIPE + " (" +
-            RECIPE_NAME + " , " +
-            RECIPE_DES + " , " +
-            RECIPE_MATERIAL + " , " +
-            RECIPE_MAKING + " , " +
-            RECIPE_AVATAR + " ) " +
-            "VALUES ( " +
-            "'Gà 50KG', 'Món dễ ăn, thơm ngon và được nhiều người yêu thích', " +
-            "'Gà                50kg\n" +
-            "Bơ ', 'Gà 50KG', 'ga50kg' " +
-            ")";
-
 
 
     private String QUE_INSERT_WISHLIST= "insert into " + TBL_WISHLIST + " (" +
@@ -673,7 +660,6 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE8);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE9);
         sqLiteDatabase.execSQL(QUE_INSERT_RECIPE10);
-        sqLiteDatabase.execSQL(QUE_INSERT_RECIPE11);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST);
         sqLiteDatabase.execSQL(QUE_INSERT_WISHLIST1);
         sqLiteDatabase.execSQL(QUE_INSERT_THEME);
