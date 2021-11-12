@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letscook.DAO.UserDAO;
+import com.example.letscook.Encrypt.AESCrypt;
 import com.example.letscook.R;
 import com.example.letscook.model.User;
 import com.example.letscook.ui.notes.NoteDetailActivity;
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         UserDAO userDAO = new UserDAO(getApplicationContext());
@@ -41,11 +43,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!edt_email.getText().toString().equals("") && !edt_password.getText().toString().equals("")) {
                     if (Validation.isValidMail(edt_email.getText().toString())) {
-                        User user = userDAO.getUser(edt_email.getText().toString().trim(), edt_password.getText().toString().trim());
+                        User user = userDAO.getUser(edt_email.getText().toString().trim(), AESCrypt.encrypt(edt_password.getText().toString().trim()));
                         if (user != null) {
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("object_user", user);
+                            bundle.putSerializable("user", user);
                             i.putExtras(bundle);
                             LoginActivity.this.startActivity(i);
                             finish();
@@ -56,6 +58,14 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Hãy nhập đầy đủ thông tin !", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        findViewById(R.id.btn_back_in_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+                finish();
             }
         });
     }

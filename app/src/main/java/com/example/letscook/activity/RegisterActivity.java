@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letscook.DAO.UserDAO;
+import com.example.letscook.Encrypt.AESCrypt;
 import com.example.letscook.R;
 import com.example.letscook.model.User;
 import com.example.letscook.validation.Validation;
@@ -40,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (Validation.isValidMail(edt_email.getText().toString())) {
                         if (!userDAO.isExistMail(edt_email.getText().toString())) {
                             if(edt_password.getText().toString().equals(edt_confirmPassword.getText().toString())){
-                                if (userDAO.register(new User(edt_username.getText().toString(), edt_email.getText().toString(), edt_password.getText().toString()))) {
+                                if (userDAO.register(new User(edt_username.getText().toString(), edt_email.getText().toString().trim(), AESCrypt.encrypt(edt_password.getText().toString().trim())))) {
                                     Toast.makeText(getApplicationContext(), "Đăng ký thành công !", Toast.LENGTH_LONG).show();
                                     finish();
                                     onBackPressed();
@@ -60,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                 userDAO.close();
             }
         });
-        findViewById(R.id.img_btn_back).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.img_btn_back_in_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();

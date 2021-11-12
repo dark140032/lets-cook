@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.letscook.DAO.UserDAO;
+import com.example.letscook.Encrypt.AESCrypt;
 import com.example.letscook.R;
 import com.example.letscook.activity.LoginActivity;
 import com.example.letscook.activity.WelcomeActivity;
@@ -39,7 +40,7 @@ public class ProfileChangePasswordFragment extends Fragment {
         //Get user đã đăng nhập tại code này
         Intent intent = this.getActivity().getIntent();
         Bundle bundle = intent.getExtras();
-        User user = (User) bundle.getSerializable("object_user");
+        User user = (User) bundle.getSerializable("user");
         //
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
@@ -60,11 +61,11 @@ public class ProfileChangePasswordFragment extends Fragment {
             public void onClick(View view) {
                 if (!edt_oldPassword.getText().toString().equals("") && !edt_newPassword.getText().toString().equals("")
                         && !edt_confirmPassword.getText().toString().equals("")) {
-                    if (edt_oldPassword.getText().toString().equals(user.getPassword())) {
+                    if (AESCrypt.encrypt(edt_oldPassword.getText().toString().trim()).equals(user.getPassword())) {
                         if (edt_newPassword.getText().toString().equals(edt_confirmPassword.getText().toString())) {
                             UserDAO userDAO = new UserDAO(getActivity());
                             userDAO.open();
-                            if (userDAO.updatePassword(user.getUserId(), edt_newPassword.getText().toString())) {
+                            if (userDAO.updatePassword(user.getUserId(), AESCrypt.encrypt(edt_newPassword.getText().toString()))) {
                                 Toast.makeText(getContext(), "Cập nhật mật khẩu thành công, hãy đăng nhập lại !", Toast.LENGTH_LONG).show();
                                 LoginActivity loginActivity = new LoginActivity();
                                 loginActivity.emailFromChangePassword = user.getEmail();
