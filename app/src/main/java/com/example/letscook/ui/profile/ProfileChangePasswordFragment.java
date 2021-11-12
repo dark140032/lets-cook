@@ -40,7 +40,7 @@ public class ProfileChangePasswordFragment extends Fragment {
         //Get user đã đăng nhập tại code này
         Intent intent = this.getActivity().getIntent();
         Bundle bundle = intent.getExtras();
-        User user = (User) bundle.getSerializable("user");
+        User user = (User) bundle.getSerializable("object_user");
         //
 
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);

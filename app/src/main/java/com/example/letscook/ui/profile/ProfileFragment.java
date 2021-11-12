@@ -62,7 +62,7 @@ public class ProfileFragment extends Fragment {
         //Get user đã đăng nhập tại code này
         Intent intent = this.getActivity().getIntent();
         Bundle bundle = intent.getExtras();
-        user = (User) bundle.getSerializable("user");
+        user = (User) bundle.getSerializable("object_user");
         //
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         binding = FragmentProfileBinding.inflate(inflater, container, false);
@@ -85,21 +85,8 @@ public class ProfileFragment extends Fragment {
                                            DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
                                                    new DatePickerDialog.OnDateSetListener() {
                                                        @Override
-                                                       public void onDateSet(DatePicker view, int year,
-                                                                             int monthOfYear, int dayOfMonth) {
-
-                                                           if (dayOfMonth > 10 && monthOfYear > 10) {
-                                                               txt_dateOfBirth.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                                           } else {
-                                                               if (dayOfMonth < 10 && monthOfYear < 10)
-                                                                txt_dateOfBirth.setText("0" + dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year);
-                                                               else if (dayOfMonth < 10)
-                                                                   txt_dateOfBirth.setText("0" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                                               else if (monthOfYear < 10) {
-                                                                   txt_dateOfBirth.setText(dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year);
-                                                               }
-                                                           }
-
+                                                       public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                                        txt_dateOfBirth.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                                                        }
                                                    }, mYear, mMonth, mDay);
 
@@ -135,7 +122,7 @@ public class ProfileFragment extends Fragment {
                         ll_ButonEdit.setVisibility(View.GONE);
 
                         bundle.clear();
-                        bundle.putSerializable("user", new User(user.getUserId(), edt_username.getText().toString(), user.getEmail(),
+                        bundle.putSerializable("object_user", new User(user.getUserId(), edt_username.getText().toString(), user.getEmail(),
                                 user.getPassword(), "link_avatar", txt_dateOfBirth.getText().toString(),
                                 edt_job.getText().toString(), edt_description.getText().toString()));
                         intent.putExtras(bundle);
