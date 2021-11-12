@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (user != null) {
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable("user", user);
+                            bundle.putSerializable("object_user", user);
                             i.putExtras(bundle);
                             LoginActivity.this.startActivity(i);
                             finish();
