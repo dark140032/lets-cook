@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
         homeDAO = new HomeDAO(getContext());
         homeDAO.open();
         ArrayList<Theme> themes = homeDAO.getAllTheme();
-        recipeAdapter = new HomeAdapter(getContext(),themes);
+        recipeAdapter = new HomeAdapter(getContext(),themes, user.getUserId());
         recyclerView.setAdapter(recipeAdapter);
 
         // Đưa item_recycleview_category vào adapter

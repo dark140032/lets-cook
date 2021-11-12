@@ -133,7 +133,7 @@ public class MyDB extends SQLiteOpenHelper {
             "Tương cà \n" +
             "Đế bánh Pizza\n" +
             "Hành tím \n" +
-            "Bơ ', 'hambeger', 'hambeger.png' " +
+            "Bơ ', 'hambeger', 'pizzahaisan' " +
             ")";
     private String QUE_INSERT_RECIPE1= "insert into " + TBL_RECIPE + " (" +
             RECIPE_NAME + " , " +
@@ -142,7 +142,7 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger.png' " +
+            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
             ")";
 
     private String QUE_INSERT_RECIPE2= "insert into " + TBL_RECIPE + " (" +
@@ -152,7 +152,7 @@ public class MyDB extends SQLiteOpenHelper {
             RECIPE_MAKING + " , " +
             RECIPE_AVATAR + " ) " +
             "VALUES ( " +
-            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger.png' " +
+            "'DUC1', 'DUC1', 'hambeger', 'hambeger', 'hambeger' " +
             ")";
 
     private String QUE_INSERT_WISHLIST= "insert into " + TBL_WISHLIST + " (" +
@@ -175,21 +175,21 @@ public class MyDB extends SQLiteOpenHelper {
             THEME_IMAGE + " ) " +
 
             "VALUES ( " +
-            "'AN TOI', '' )";
+            "'AN TOI', 'pizzahaisan' )";
 
     private String QUE_INSERT_THEME1= "insert into " + TBL_THEME + " (" +
             THEME_NAME + " , " +
             THEME_IMAGE + " ) " +
 
             "VALUES ( " +
-            "'AN SANG' , '')";
+            "'AN SANG' , 'pizzahaisan')";
 
     private String QUE_INSERT_THEME2= "insert into " + TBL_THEME + " (" +
             THEME_NAME + " , " +
             THEME_IMAGE + " ) " +
 
             "VALUES ( " +
-            "'AN TRUA' , '')";
+            "'AN TRUA' , 'pizzahaisan')";
 
     private String QUE_INSERT_THEME_RECIPE= "insert into " + TBL_THEME_RECIPE + " (" +
             THEME_ID + " , " +
@@ -211,7 +211,6 @@ public class MyDB extends SQLiteOpenHelper {
 
             "VALUES ( " +
             "2 , 2)";
-
 
     private String QUE_INSERT_CATEGORY= "insert into " + TBL_CATEGORY + " (" +
             CATEGORY_NAME + " ) " +

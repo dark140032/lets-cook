@@ -2,6 +2,7 @@ package com.example.letscook.ui.search;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +52,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder holder, int position) {
         Recipe recipe = listRecipesearch.get(position);
-        holder.recipeAvatar.setImageResource(R.drawable.hambeger);
+        holder.recipeAvatar.setImageDrawable(getImage(recipe.getRecipeAvatar()));
         holder.txtName.setText(recipe.getRecipeName());
 
         searchDAO =new SearchDAO(context);
@@ -98,4 +99,19 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         // as change in recycler view data.
         notifyDataSetChanged();
     }
+
+    private Drawable getImage(String nombreFile) {
+        Drawable res1 = null;
+        String uri1 = null;
+        try {
+            //First image
+            uri1 = "@drawable/" + nombreFile;
+            int imageResource1 = context.getResources().getIdentifier(uri1, null,context.getPackageName());
+            res1 = context.getResources().getDrawable(imageResource1);
+        } catch (Exception e) {
+
+        }
+        return res1;
+    }
+
 }
