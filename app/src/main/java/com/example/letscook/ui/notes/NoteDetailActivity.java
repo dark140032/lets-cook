@@ -19,6 +19,7 @@ import com.example.letscook.R;
 import com.example.letscook.activity.MainActivity;
 import com.example.letscook.model.Note;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class NoteDetailActivity extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class NoteDetailActivity extends AppCompatActivity {
     AlertDialog.Builder builder;
     RecyclerView recyclerView;
     NoteAdapter noteAdapter;
+    String istemp = "no";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +42,7 @@ public class NoteDetailActivity extends AppCompatActivity {
         noteDAO = new NoteDAO(this);
         noteDAO.open();
 
-        btnBackNotes = findViewById(R.id.btn_back_notes);
-        btnBackNotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NoteDetailActivity.super.onBackPressed();
-            }
-        });
+
 
         //Get user đã đăng nhập tại code này
         Intent intent1 = this.getIntent();
@@ -117,6 +113,42 @@ public class NoteDetailActivity extends AppCompatActivity {
                 }
             });
 
+            btnBackNotes = findViewById(R.id.btn_back_notes);
+            btnBackNotes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    builder = new AlertDialog.Builder(NoteDetailActivity.this);
+                    //Uncomment the below code to Set the message and title from the strings.xml file
+                    builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+
+                    //Setting message manually and performing action on button click
+                    builder.setMessage("Bạn có lưu bài này không ?")
+                            .setCancelable(false)
+                            .setPositiveButton("Đồng ý!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    String title = txtTitleNote.getText().toString();
+                                    String content = txtContentNote.getText().toString();
+                                    noteDAO.update(_id,title,content,note.getUserId());
+                                    onBackPressed();
+
+                                                                    }
+                            })
+                            .setNegativeButton("Không!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    onBackPressed();
+                                }
+                            });
+                    //Creating dialog box
+                    AlertDialog alert = builder.create();
+                    //Setting the title manually
+                    alert.setTitle("Thông báo");
+                    alert.show();
+                }
+            });
+
+
+
         }else {
             Intent intent = getIntent();
             Boolean add = intent.getBooleanExtra("add",true);
@@ -135,14 +167,85 @@ public class NoteDetailActivity extends AppCompatActivity {
                     if (title.isEmpty()){
                         Toast.makeText(getApplicationContext(),"Bạn không thể để tiêu đề trống!",Toast.LENGTH_LONG).show();
                     }else{
-                        noteDAO.insert(new Note("",title, content,date,_idUser));
-                        Toast.makeText(getApplicationContext(),"Lưu thành công!",Toast.LENGTH_LONG).show();
-                        onBackPressed();
+
+                        ArrayList<Note> notelist = noteDAO.getAll(_idUser);
+                        for (Note item:notelist) {
+                            if (item.getNoteName().equals(title)){
+
+                                istemp = "yes";
+                            }
+                        }
+                        if (istemp.equals("no")){
+                            noteDAO.insert(new Note("",title, content,date,_idUser));
+                            Toast.makeText(getApplicationContext(),"Lưu thành công!",Toast.LENGTH_LONG).show();
+                            onBackPressed();
+                        }else {
+                            Toast.makeText(getApplicationContext(),"Tiêu đề đã tồn tại!",Toast.LENGTH_LONG).show();
+                            istemp = "no";
+                        }
+
                     }
                 }
             });
             btn_deleteDetail = findViewById(R.id.btn_delete_note_detail);
             btn_deleteDetail.setVisibility(View.INVISIBLE);
+
+            btnBackNotes = findViewById(R.id.btn_back_notes);
+            btnBackNotes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    builder = new AlertDialog.Builder(NoteDetailActivity.this);
+                    //Uncomment the below code to Set the message and title from the strings.xml file
+                    builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+
+                    //Setting message manually and performing action on button click
+                    builder.setMessage("Bạn có lưu bài này không ?")
+                            .setCancelable(false)
+                            .setPositiveButton("Đồng ý!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    String title = txtTitleNote.getText().toString();
+                                    String content = txtContentNote.getText().toString();
+                                    Date d = new Date();
+                                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+                                    String date= formatter.format(d);
+                                    Log.e("TAG", "ID alo: " + _idUser );
+                                    if (title.isEmpty()){
+                                        Toast.makeText(getApplicationContext(),"Bạn không thể để tiêu đề trống!",Toast.LENGTH_LONG).show();
+                                    }else{
+
+                                        ArrayList<Note> notelist = noteDAO.getAll(_idUser);
+                                        for (Note item:notelist) {
+                                            if (item.getNoteName().equals(title)){
+
+                                                istemp = "yes";
+                                            }
+                                        }
+                                        if (istemp.equals("no")){
+                                            noteDAO.insert(new Note("",title, content,date,_idUser));
+                                            Toast.makeText(getApplicationContext(),"Lưu thành công!",Toast.LENGTH_LONG).show();
+                                            onBackPressed();
+                                        }else {
+                                            Toast.makeText(getApplicationContext(),"Tiêu đề đã tồn tại!",Toast.LENGTH_LONG).show();
+                                            istemp = "no";
+                                        }
+
+                                    }
+
+                                }
+                            })
+                            .setNegativeButton("Không!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    onBackPressed();
+                                }
+                            });
+                    //Creating dialog box
+                    AlertDialog alert = builder.create();
+                    //Setting the title manually
+                    alert.setTitle("Thông báo");
+                    alert.show();
+                }
+            });
         }
     }
 
