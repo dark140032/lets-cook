@@ -1,8 +1,10 @@
 package com.example.letscook.ui.home;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,7 @@ public class ThemeActivity extends AppCompatActivity {
     ThemeAdapter themeAdapter;
     HomeDAO homeDAO;
     ImageButton btnBackThemeDetail;
+    ImageView imgv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class ThemeActivity extends AppCompatActivity {
         });
 
         Theme theme = (Theme) bundle.get("object_theme");
+        String _id = (String) bundle.get("_idUserL") ;
 
         if (theme != null){
             String themeId = theme.getThemeId();
@@ -55,10 +59,26 @@ public class ThemeActivity extends AppCompatActivity {
             txtThemeNm = findViewById(R.id.txt_theme_nm);
             txtThemeNm.setText(themeNm);
 
+            imgv = findViewById(R.id.imgvTheme);
+            imgv.setImageDrawable(getImage(theme.getThemeImage()));
+
             ArrayList<Recipe> recipes = homeDAO.getAllRecipeByThemeId(themeId);
-            themeAdapter = new ThemeAdapter(getApplicationContext(),recipes);
+            themeAdapter = new ThemeAdapter(getApplicationContext(),recipes, _id);
             themeDetailRecyclerView.setAdapter(themeAdapter);
             themeDetailRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         }
+    }
+    private Drawable getImage(String nombreFile) {
+        Drawable res1 = null;
+        String uri1 = null;
+        try {
+            //First image
+            uri1 = "@drawable/" + nombreFile;
+            int imageResource1 = getResources().getIdentifier(uri1, null,getPackageName());
+            res1 = getResources().getDrawable(imageResource1);
+        } catch (Exception e) {
+
+        }
+        return res1;
     }
 }

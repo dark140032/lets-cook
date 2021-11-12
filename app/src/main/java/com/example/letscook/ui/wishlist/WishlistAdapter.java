@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,11 +30,14 @@ import com.example.letscook.R;
 import com.example.letscook.model.Recipe;
 import com.example.letscook.ui.notes.NoteDetailActivity;
 import com.example.letscook.ui.recipe.RecipeDetailActivity;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+
 
 public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHolder>{
     Context context;
@@ -65,7 +69,7 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Recipe recipe = listRecipe.get(position);
 
-        holder.recipeAvatar.setImageResource(R.drawable.hambeger);
+        holder.recipeAvatar.setImageDrawable(getImage(recipe.getRecipeAvatar()));
 
         Locale locale = new Locale("vn", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
@@ -158,6 +162,20 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         // below line is to notify our adapter
         // as change in recycler view data.
         notifyDataSetChanged();
+    }
+
+    private Drawable getImage(String nombreFile) {
+        Drawable res1 = null;
+        String uri1 = null;
+        try {
+            //First image
+            uri1 = "@drawable/" + nombreFile;
+            int imageResource1 = context.getResources().getIdentifier(uri1, null,context.getPackageName());
+            res1 = context.getResources().getDrawable(imageResource1);
+        } catch (Exception e) {
+
+        }
+        return res1;
     }
 
 }
