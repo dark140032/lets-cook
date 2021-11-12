@@ -77,7 +77,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleview_home_category"
                     android:layout_width="wrap_content"
-                    android:layout_height="500dp"
+                    android:layout_height="780dp"
                     tools:listitem="@layout/iteam_recycleview_home"
                     android:orientation="horizontal"
                     />

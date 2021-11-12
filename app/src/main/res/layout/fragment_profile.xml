@@ -61,7 +61,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/hambeger"
+                    android:src="@drawable/user_img"
                     app:cardCornerRadius="30dp" />
 
                 <LinearLayout
