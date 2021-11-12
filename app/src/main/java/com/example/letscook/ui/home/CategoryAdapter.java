@@ -1,12 +1,14 @@
 package com.example.letscook.ui.home;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letscook.DAO.HomeDAO;
@@ -22,11 +24,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     ArrayList<Category> categories;
 
     public String _id;
+    String _idUserL;
 
-
-    public CategoryAdapter(Context context, ArrayList<Category> categories) {
+    public CategoryAdapter(Context context, ArrayList<Category> categories, String _idUserL) {
         this.context = context;
         this.categories = categories;
+        this._idUserL = _idUserL;
     }
 
     @NonNull
@@ -53,11 +56,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         ArrayList<Recipe> recipes = homeDAO.getAllRecipeByCategoryId(_id);
 
         ItemCategoryAdapter itemCategoryAdapter;
-        itemCategoryAdapter = new ItemCategoryAdapter(context,recipes);
+        itemCategoryAdapter = new ItemCategoryAdapter(context,recipes, _idUserL);
         holder.recyclerView.setAdapter(itemCategoryAdapter);
-
-
-
     }
 
     @Override

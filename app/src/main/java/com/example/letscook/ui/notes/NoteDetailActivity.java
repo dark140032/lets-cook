@@ -1,23 +1,23 @@
 package com.example.letscook.ui.notes;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.letscook.DAO.NoteDAO;
 import com.example.letscook.R;
-import com.example.letscook.db.MyDB;
+import com.example.letscook.activity.MainActivity;
 import com.example.letscook.model.Note;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,8 +29,9 @@ public class NoteDetailActivity extends AppCompatActivity {
     TextView txtContentNote;
     NoteDAO noteDAO;
     ImageButton btn_deleteDetail;
-
+    AlertDialog.Builder builder;
     RecyclerView recyclerView;
+    NoteAdapter noteAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +48,21 @@ public class NoteDetailActivity extends AppCompatActivity {
             }
         });
 
+        //Get user đã đăng nhập tại code này
+        Intent intent1 = this.getIntent();
+
+        String _idUser= intent1.getStringExtra("_idUser");
+
+        Log.e("TAG", "ID USER: " + _idUser );
+
         Bundle bundle = getIntent().getExtras();
         if (bundle == null){
             return;
         }
 
         Note note = (Note) bundle.get("object_note");
+
+
         if (note != null){
             String titleNote = note.getNoteName();
             String contentNote = note.getNoteContent();
@@ -66,9 +76,31 @@ public class NoteDetailActivity extends AppCompatActivity {
             btn_deleteDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    noteDAO.delete(_id,"1");
-                    Toast.makeText(NoteDetailActivity.this, "Delete success!",Toast.LENGTH_LONG);
-                    onBackPressed();
+                    builder = new AlertDialog.Builder(NoteDetailActivity.this);
+                    //Uncomment the below code to Set the message and title from the strings.xml file
+                    builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+
+                    //Setting message manually and performing action on button click
+                    builder.setMessage("Bạn có chắc rằng muốn xóa nó ?")
+                            .setCancelable(false)
+                            .setPositiveButton("Đồng ý!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    noteDAO.delete(_id,note.getUserId());
+                                    onBackPressed();
+                                    Toast.makeText(NoteDetailActivity.this, "Xóa thành công!",Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .setNegativeButton("Không!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //  Action for 'NO' Button
+                                    dialog.cancel();
+                                }
+                            });
+                    //Creating dialog box
+                    AlertDialog alert = builder.create();
+                    //Setting the title manually
+                    alert.setTitle("Thông báo");
+                    alert.show();
                 }
             });
 
@@ -80,7 +112,7 @@ public class NoteDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     String title = txtTitleNote.getText().toString();
                     String content = txtContentNote.getText().toString();
-                    noteDAO.update(_id,title,content,"1");
+                    noteDAO.update(_id,title,content,note.getUserId());
                     onBackPressed();
                 }
             });
@@ -99,8 +131,14 @@ public class NoteDetailActivity extends AppCompatActivity {
                     Date d = new Date();
                     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
                     String date= formatter.format(d);
-                    noteDAO.insert(new Note("",title, content,date,"1"));
-                    onBackPressed();
+                    Log.e("TAG", "ID alo: " + _idUser );
+                    if (title.isEmpty()){
+                        Toast.makeText(getApplicationContext(),"Bạn không thể để tiêu đề trống!",Toast.LENGTH_LONG).show();
+                    }else{
+                        noteDAO.insert(new Note("",title, content,date,_idUser));
+                        Toast.makeText(getApplicationContext(),"Lưu thành công!",Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    }
                 }
             });
             btn_deleteDetail = findViewById(R.id.btn_delete_note_detail);

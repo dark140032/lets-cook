@@ -1,6 +1,8 @@
 package com.example.letscook.ui.wishlist;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.example.letscook.DAO.WishlistDAO;
 import com.example.letscook.R;
 import com.example.letscook.databinding.FragmentWishlistBinding;
 import com.example.letscook.model.Recipe;
+import com.example.letscook.model.User;
 
 import java.util.ArrayList;
 
@@ -40,14 +43,20 @@ public class WishlistFragment extends Fragment {
         binding = FragmentWishlistBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        //Get user đã đăng nhập tại code này
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        User user = (User) bundle.getSerializable("object_user");
+
+        Log.e("TAG", "id user: " + user.getUserId() );
         wishlistDAO =new WishlistDAO(getContext());
         wishlistDAO.open();
-        ArrayList<Recipe> listRecipe = wishlistDAO.getAllWishlist("1");
+        ArrayList<Recipe> listRecipe = wishlistDAO.getAllWishlist(user.getUserId());
         recyclerView= root.findViewById(R.id.recyclerview);
 
         listRecipe.size();
 
-        congThucAdapter=new WishlistAdapter(getContext(),listRecipe);
+        congThucAdapter=new WishlistAdapter(getContext(),listRecipe, user.getUserId());
         recyclerView.setAdapter(congThucAdapter);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(null, 2);
@@ -79,7 +88,7 @@ public class WishlistFragment extends Fragment {
                     // if no item is added in filtered list we are
                     // displaying a toast message as no data found.
                     congThucAdapter.filterList(filteredlist);
-                    Toast.makeText(getContext(), "Not Found!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Không có kết quả!", Toast.LENGTH_SHORT).show();
 
                 } else {
                     // at last we are passing that filtered
@@ -127,4 +136,25 @@ public class WishlistFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Get user đã đăng nhập tại code này
+        Intent intent = getActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        User user = (User) bundle.getSerializable("object_user");
+
+        Log.e("TAG", "id user: " + user.getUserId() );
+        wishlistDAO =new WishlistDAO(getContext());
+        wishlistDAO.open();
+        ArrayList<Recipe> listRecipe = wishlistDAO.getAllWishlist(user.getUserId());
+
+        listRecipe.size();
+
+        congThucAdapter=new WishlistAdapter(getContext(),listRecipe, user.getUserId());
+        recyclerView.setAdapter(congThucAdapter);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(null, 2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+    }
 }

@@ -1,10 +1,9 @@
-package com.example.letscook.ui.home;
+package com.example.letscook.ui.search;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,44 +14,51 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.letscook.DAO.SearchDAO;
+import com.example.letscook.DAO.WishlistDAO;
 import com.example.letscook.R;
 import com.example.letscook.model.Recipe;
 import com.example.letscook.ui.recipe.RecipeDetailActivity;
+import com.example.letscook.ui.wishlist.WishlistAdapter;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
-public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> {
+public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder>{
 
     Context context;
-    ArrayList<Recipe> recipes;
+    ArrayList<Recipe> listRecipesearch;
+    SearchDAO searchDAO;
     String _idUserL;
 
-    public ThemeAdapter(Context context, ArrayList<Recipe> recipes, String _idUserL) {
+    public SearchAdapter(Context context, ArrayList<Recipe> listRecipesearch, String _idUserL) {
         this.context = context;
-        this.recipes = recipes;
+        this.listRecipesearch = listRecipesearch;
         this._idUserL = _idUserL;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SearchAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View view = inflater.inflate(R.layout.item_theme_detail, parent, false);
+        View view = inflater.inflate(R.layout.item_search, parent, false);
 
-        return new ViewHolder(view);
+        return new SearchAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Recipe recipe = recipes.get(position);
+    public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder holder, int position) {
+        Recipe recipe = listRecipesearch.get(position);
+        holder.recipeAvatar.setImageDrawable(getImage(recipe.getRecipeAvatar()));
+        holder.txtName.setText(recipe.getRecipeName());
 
-            holder.txtThemeDetailNm.setText(recipe.getRecipeName());
+        searchDAO =new SearchDAO(context);
+        searchDAO.open();
 
-            holder.imgv.setImageDrawable(getImage(recipe.getRecipeAvatar()));
-
-        holder.linearLayOut.setOnClickListener(new View.OnClickListener() {
+        holder.recycleview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, RecipeDetailActivity.class);
@@ -63,30 +69,35 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
                 context.startActivity(i);
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return recipes.size();
+        return listRecipesearch.size();
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtThemeDetailNm;
-        ImageButton imgBtnThemeDetailArrowItem;
-        View linearLayOut;
-        ImageView imgv;
-
+        ImageView recipeAvatar;
+        TextView txtName;
+        View recycleview;
         public ViewHolder(@NonNull View itemView) {
-
             super(itemView);
-            Log.e("TAG", "ViewHolder: ");
-            txtThemeDetailNm = itemView.findViewById(R.id.txt_theme_detail_nm);
-            imgBtnThemeDetailArrowItem = itemView.findViewById(R.id.img_btn_theme_detail_arrow_item);
-            linearLayOut =  itemView.findViewById(R.id.item_theme_detail_list);
-            imgv = itemView.findViewById(R.id.anhcongthuc);
+            recipeAvatar = itemView.findViewById(R.id.img_avatar_search);
+            txtName = itemView.findViewById(R.id.txt_recipe_name_rearch);
+            recycleview = itemView.findViewById(R.id.layout_item_Search);
         }
+    }
+
+    // method for filtering our recyclerview items.
+    public void filterList(ArrayList<Recipe> filterllist) {
+        // below line is to add our filtered
+        // list in our course array list.
+        listRecipesearch = filterllist;
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged();
     }
 
     private Drawable getImage(String nombreFile) {

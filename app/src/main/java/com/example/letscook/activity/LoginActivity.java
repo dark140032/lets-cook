@@ -2,6 +2,7 @@ package com.example.letscook.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import com.example.letscook.DAO.UserDAO;
 import com.example.letscook.Encrypt.AESCrypt;
 import com.example.letscook.R;
 import com.example.letscook.model.User;
+import com.example.letscook.ui.notes.NoteDetailActivity;
 import com.example.letscook.ui.recipe.RecipeDetailActivity;
 import com.example.letscook.validation.Validation;
 
