@@ -1,6 +1,7 @@
 package com.example.letscook.ui.recipe;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,6 +50,9 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         String _id = (String) bundle.get("_idUserL") ;
         Log.e("TAG", "_idL: " + _id );
+
+        ImageView image = findViewById(R.id.img_recipe_avatar);
+        image.setImageDrawable(getImage(recipe.getRecipeAvatar()));
 
         String txt_name = recipe.getRecipeName();
         TextView txtName = findViewById(R.id.txt_recipe_name);
@@ -154,4 +158,17 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
     }
 
+    private Drawable getImage(String nombreFile) {
+        Drawable res1 = null;
+        String uri1 = null;
+        try {
+            //First image
+            uri1 = "@drawable/" + nombreFile;
+            int imageResource1 = getResources().getIdentifier(uri1, null,getPackageName());
+            res1 = getResources().getDrawable(imageResource1);
+        } catch (Exception e) {
+
+        }
+        return res1;
+    }
 }
