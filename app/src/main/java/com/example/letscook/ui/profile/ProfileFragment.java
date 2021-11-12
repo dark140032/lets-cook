@@ -31,6 +31,7 @@ import com.example.letscook.R;
 import com.example.letscook.activity.WelcomeActivity;
 import com.example.letscook.databinding.FragmentProfileBinding;
 import com.example.letscook.model.User;
+import com.example.letscook.validation.Validation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -52,7 +53,7 @@ public class ProfileFragment extends Fragment {
     private EditText edt_description;
     private LinearLayout ll_ButonMain;
     private LinearLayout ll_ButonEdit;
-    private  int mYear = 0, mMonth = 0, mDay = 0;
+    private int mYear = 0, mMonth = 0, mDay = 0;
     public View root;
     public User user;
 
@@ -61,39 +62,51 @@ public class ProfileFragment extends Fragment {
         //Get user đã đăng nhập tại code này
         Intent intent = this.getActivity().getIntent();
         Bundle bundle = intent.getExtras();
-        user = (User) bundle.getSerializable("object_user");
+        user = (User) bundle.getSerializable("user");
         //
-
         profileViewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         root = binding.getRoot();
+
         getProfileAccount();
 
+        UserDAO userDAO = new UserDAO(getContext());
 
+        root.findViewById(R.id.txt_dateOfBirth).
+                setOnClickListener(new View.OnClickListener()
+                                   {
+                                       @Override
+                                       public void onClick(View view) {
+                                           final Calendar c = Calendar.getInstance();
+                                           mYear = c.get(Calendar.YEAR);
+                                           mMonth = c.get(Calendar.MONTH);
+                                           mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        root.findViewById(R.id.txt_dateOfBirth).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
+                                           DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
+                                                   new DatePickerDialog.OnDateSetListener() {
+                                                       @Override
+                                                       public void onDateSet(DatePicker view, int year,
+                                                                             int monthOfYear, int dayOfMonth) {
 
+                                                           if (dayOfMonth > 10 && monthOfYear > 10) {
+                                                               txt_dateOfBirth.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                                           } else {
+                                                               if (dayOfMonth < 10 && monthOfYear < 10)
+                                                                txt_dateOfBirth.setText("0" + dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year);
+                                                               else if (dayOfMonth < 10)
+                                                                   txt_dateOfBirth.setText("0" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                                               else if (monthOfYear < 10) {
+                                                                   txt_dateOfBirth.setText(dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year);
+                                                               }
+                                                           }
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
+                                                       }
+                                                   }, mYear, mMonth, mDay);
 
-                                txt_dateOfBirth.setText(dayOfMonth + " / " + (monthOfYear + 1) + " / " + year);
-
-                            }
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
-            }
-        }
-    );
+                                           datePickerDialog.show();
+                                       }
+                                   }
+                );
 
         root.findViewById(R.id.imgBtn_editProfile).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,20 +121,30 @@ public class ProfileFragment extends Fragment {
         root.findViewById(R.id.btn_update_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserDAO userDAO = new UserDAO(getActivity());
                 userDAO.open();
-                User userUpdate = new User( user.getUserId(), edt_username.getText().toString(), "link_avatar"
-                                           ,txt_dateOfBirth.getText().toString(), edt_job.getText().toString(),
-                                            edt_description.getText().toString());
+                User userUpdate = new User(user.getUserId(), edt_username.getText().toString(), "link_avatar"
+                        , txt_dateOfBirth.getText().toString(), edt_job.getText().toString(),
+                        edt_description.getText().toString());
 
-                if(userDAO.updateProfile(userUpdate)){
-                    Toast.makeText(getContext(), "Cập nhật profile thành công !", Toast.LENGTH_SHORT).show();
-                    setEnableFalseEdit();
-                    root.findViewById(R.id.imgBtn_editProfile).setVisibility(View.VISIBLE);
-                    ll_ButonMain.setVisibility(View.VISIBLE);
-                    ll_ButonEdit.setVisibility(View.GONE);
-                }else {
-                    Toast.makeText(getContext(), "Cập nhật không thành công !", Toast.LENGTH_SHORT).show();
+                if (Validation.isFutureDate(txt_dateOfBirth.getText().toString())) {
+                    if (userDAO.updateProfile(userUpdate)) {
+                        Toast.makeText(getContext(), "Cập nhật profile thành công !", Toast.LENGTH_SHORT).show();
+                        setEnableFalseEdit();
+                        root.findViewById(R.id.imgBtn_editProfile).setVisibility(View.VISIBLE);
+                        ll_ButonMain.setVisibility(View.VISIBLE);
+                        ll_ButonEdit.setVisibility(View.GONE);
+
+                        bundle.clear();
+                        bundle.putSerializable("user", new User(user.getUserId(), edt_username.getText().toString(), user.getEmail(),
+                                user.getPassword(), "link_avatar", txt_dateOfBirth.getText().toString(),
+                                edt_job.getText().toString(), edt_description.getText().toString()));
+                        intent.putExtras(bundle);
+
+                    } else {
+                        Toast.makeText(getContext(), "Cập nhật không thành công !", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Ngày sinh không được vượt quá ngày hiện tại !", Toast.LENGTH_SHORT).show();
                 }
                 userDAO.close();
             }
@@ -130,11 +153,11 @@ public class ProfileFragment extends Fragment {
         root.findViewById(R.id.btn_cancel_edit_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getProfileAccount();
                 setEnableFalseEdit();
                 root.findViewById(R.id.imgBtn_editProfile).setVisibility(View.VISIBLE);
                 ll_ButonMain.setVisibility(View.VISIBLE);
                 ll_ButonEdit.setVisibility(View.GONE);
+                getProfileAccount();
             }
         });
 
@@ -156,11 +179,8 @@ public class ProfileFragment extends Fragment {
             }
         });
         return root;
+
     }
-
-    ////////
-
-
 
     @Override
     public void onDestroyView() {
@@ -186,7 +206,7 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void setEnableFalseEdit() {
+    public void setEnableFalseEdit() {
 
         txt_birthDay.setTextColor(Color.parseColor("#c4c4c4"));
         txt_job.setTextColor(Color.parseColor("#c4c4c4"));
@@ -201,9 +221,11 @@ public class ProfileFragment extends Fragment {
         txt_dateOfBirth.setBackground(getResources().getDrawable(R.drawable.style_profile));
         edt_job.setBackground(getResources().getDrawable(R.drawable.style_profile));
         edt_description.setBackground(getResources().getDrawable(R.drawable.style_profile));
+
     }
 
-    private void getProfileAccount() {
+    public void getProfileAccount() {
+
         ll_ButonMain = root.findViewById(R.id.layoutBtnMain);
         ll_ButonEdit = root.findViewById(R.id.layoutBtnEdit);
 
@@ -212,14 +234,17 @@ public class ProfileFragment extends Fragment {
         txt_description = root.findViewById(R.id.txt_description);
 
         edt_username = root.findViewById(R.id.edt_username);
-        edt_username.setText(user.getUsername());
         edt_email = root.findViewById(R.id.edt_email);
-        edt_email.setText(user.getEmail());
         txt_dateOfBirth = root.findViewById(R.id.txt_dateOfBirth);
-        txt_dateOfBirth.setText(user.getDateOfBirth());
         edt_job = root.findViewById(R.id.edt_job);
-        edt_job.setText(user.getJob());
         edt_description = root.findViewById(R.id.edt_description);
+
+        edt_username.setText(user.getUsername());
+        edt_email.setText(user.getEmail());
+        txt_dateOfBirth.setText(user.getDateOfBirth());
+        edt_job.setText(user.getJob());
         edt_description.setText(user.getUserDescription());
+
+
     }
 }

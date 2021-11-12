@@ -22,6 +22,7 @@ public class UserDAO {
     public UserDAO(Context c){
         context = c;
     }
+
     public UserDAO open() throws SQLException {
         dbHelper = new MyDB(context);
         database = dbHelper.getWritableDatabase();
@@ -52,7 +53,6 @@ public class UserDAO {
         return courseModalArrayList;
     }
 
-
     public User getUser(String email, String password) {
         try {
             Cursor cursor = database.rawQuery("SELECT * FROM " + MyDB.TBL_USER + " where " + MyDB.EMAIL + " = '" + email + "' and " + MyDB.PASSWORD + " = '" + password + "'", null);
@@ -69,6 +69,27 @@ public class UserDAO {
                         cursor.getString(7));
             }
             return user;
+        }catch (Exception ex){
+
+        }
+        return null;
+    }
+
+    public User getUserById(String userId) {
+        try {
+
+            Cursor cursor = database.query(MyDB.TBL_USER, null, MyDB.USER_ID + " = ?", new String[] { String.valueOf(userId) },null, null, null);
+            if (cursor != null) {
+                cursor.moveToFirst();
+                return  new User(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(7));
+            }
         }catch (Exception ex){
 
         }
