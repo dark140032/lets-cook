@@ -34,7 +34,9 @@
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/white"
                 android:textSize="18dp"
-                android:text="Hambuger" />
-        </LinearLayout>
+                android:text="Hambuger"
+                />
+
+               </LinearLayout>
 
 </androidx.cardview.widget.CardView>
