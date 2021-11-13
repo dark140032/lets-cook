@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letscook.DAO.UserDAO;
+<<<<<<< HEAD
 import com.example.letscook.Encrypt.AESCrypt;
 import com.example.letscook.R;
 import com.example.letscook.model.User;
@@ -20,6 +21,8 @@ import com.example.letscook.validation.Validation;
 
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+=======
+>>>>>>> 066656332b58d003bf9a4801fe00e1aac4262304
 
 
 public class LoginActivity extends AppCompatActivity {

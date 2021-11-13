@@ -52,10 +52,10 @@
         android:hint="Nhập email"
         android:paddingLeft="10dp"
         android:inputType="text"
+        android:paddingLeft="15dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="TouchTargetSizeCheck" />
@@ -74,7 +74,6 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_mail_register"
         tools:ignore="TouchTargetSizeCheck" />
@@ -90,10 +89,10 @@
         android:hint="Nhập tên mật khẩu"
         android:paddingLeft="10dp"
         android:inputType="textPassword"
+        android:paddingLeft="15dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_username_register"
         tools:ignore="TouchTargetSizeCheck" />
@@ -109,13 +108,14 @@
         android:hint="Xác nhận mật khẩu"
         android:paddingLeft="10dp"
         android:inputType="textPassword"
+        android:paddingLeft="15dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_password_register"
         tools:ignore="TouchTargetSizeCheck" />
+
 
     <Button
         android:id="@+id/btn_doRegister"
@@ -135,7 +135,7 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.425"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_confirmPassword_register"
         app:layout_constraintVertical_bias="0.143" />

@@ -691,7 +691,9 @@ public class MyDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE9);
         sqLiteDatabase.execSQL(QUE_INSERT_CATEGORY_RECIPE10);
     }
-
+    public SQLiteDatabase getReadableDatabase() {
+        throw new RuntimeException("Stub!");
+    }
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 //        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS  " + TBL_NOTE);

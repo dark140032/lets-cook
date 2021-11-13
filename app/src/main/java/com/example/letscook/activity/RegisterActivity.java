@@ -1,20 +1,28 @@
 package com.example.letscook.activity;
 
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+=======
+import android.view.View;
+>>>>>>> 066656332b58d003bf9a4801fe00e1aac4262304
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.letscook.DAO.UserDAO;
+<<<<<<< HEAD
 import com.example.letscook.Encrypt.AESCrypt;
 import com.example.letscook.R;
 import com.example.letscook.model.User;
 import com.example.letscook.validation.Validation;
 
 import java.util.regex.Pattern;
+=======
+import com.example.letscook.model.User;
+>>>>>>> 066656332b58d003bf9a4801fe00e1aac4262304
 
 
 public class RegisterActivity extends AppCompatActivity {

@@ -124,6 +124,7 @@ public class UserDAO {
         return false;
     }
 
+<<<<<<< HEAD
     //Update thông tin profile
     public boolean updateProfile(User user) {
             ContentValues values = new ContentValues();
@@ -147,9 +148,31 @@ public class UserDAO {
                     return true;
                 }
             }
+=======
+    public boolean registerUser(User user) {
+        try {
+            open();
+            ContentValues values = new ContentValues();
+            values.put("user_id", user.getUserId());
+            values.put("user_name", user.getUsername());
+            values.put("email", user.getEmail());
+            values.put("password", user.getPassword());
+            values.put("user_avatar", user.getUserAvatar());
+            values.put("date_of_birth", user.getDateOfBirth());
+            values.put("job", user.getJob());
+            values.put("user_description", user.getUserDescription());
+
+            database.insert("user", null, values);
+            close();
+            return true;
+>>>>>>> 066656332b58d003bf9a4801fe00e1aac4262304
         }catch (Exception ex){
 
         }
         return false;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 066656332b58d003bf9a4801fe00e1aac4262304
 }
